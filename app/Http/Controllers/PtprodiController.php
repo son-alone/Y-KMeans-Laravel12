@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\prodi;
+use App\Models\pt;
 use App\Models\ptprodi;
 use Illuminate\Http\Request;
 
@@ -26,7 +28,9 @@ class PtprodiController extends Controller
      */
     public function create()
     {
-        return view('layouts.ptprodi.create');
+        $data_prodi = prodi::all();
+        $data_pt = pt::all();
+        return view('layouts.ptprodi.create',compact('data_prodi','data_pt'));
     }
 
     /**
