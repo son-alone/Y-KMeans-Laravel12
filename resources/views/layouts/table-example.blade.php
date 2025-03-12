@@ -31,14 +31,14 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Vicky Maulana</td>
-                            <td>vicky@example.com</td>
+                            <td>Muhammad Husaini Hasyim</td>
+                            <td>hasyim@example.com</td>
                             <td>Admin</td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>Vicky</td>
-                            <td>maulana@example.com</td>
+                            <td>Hasyim</td>
+                            <td>husaini@example.com</td>
                             <td>User</td>
                         </tr>
                     </tbody>

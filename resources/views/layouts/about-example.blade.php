@@ -59,7 +59,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Vicky</h4>
+                            <h4>Hasyim</h4>
                             <span class="badge badge-primary">CEO</span>
                         </div>
                         <div class="card-body">

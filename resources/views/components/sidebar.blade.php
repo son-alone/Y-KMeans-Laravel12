@@ -30,6 +30,24 @@
             <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('blank-page') }}"><i class="far fa-square"></i> <span>Blank Page</span></a>
             </li>
+            <li class="{{ Request::is('prodi') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('prodi') }}"><i class="fas fa-university"></i> <span> Data Prodi </span></a>
+            </li>
+            <li class="{{ Request::is('pt') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('pt') }}"><i class="fas fa-university"></i> <span> Data Perguruan Tinggi </span></a>
+            </li>
+            <li class="{{ Request::is('ptprodi') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('ptprodi') }}"><i class="fas fa-university"></i> <span> Data Prodi Perguruan Tinggi </span></a>
+            </li>
+            <li class="{{ Request::is('batch') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('batch') }}"><i class="fas fa-university"></i> <span> Data Batch </span></a>
+            </li>
+            <li class="{{ Request::is('yudisium') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('yudisium') }}"><i class="fas fa-university"></i> <span> Data Yudisium </span></a>
+            </li>
+            <li class="{{ Request::is('detail') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('detail') }}"><i class="fas fa-university"></i> <span> Data Detail Yudisium </span></a>
+            </li>
             <li class="menu-header">Examples</li>
             <li class="{{ Request::is('table-example') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('table-example') }}"><i class="fas fa-table"></i> <span>Table Example</span></a>

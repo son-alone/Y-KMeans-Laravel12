@@ -203,7 +203,7 @@
   <footer>
     <div class="container">
       <p class="mb-1">&copy; {{ date('Y') }} laravel 12 Modern. All Rights Reserved.</p>
-      <p class="mb-0">Contributors: Vicky Maulana and LLDIKTI 2 Division of Information System Development Interns.</p>
+      <p class="mb-0">Contributors: Muhammad Husaini Hasyim and LLDIKTI 2 Division of Information System Development Interns.</p>
     </div>
   </footer>
 

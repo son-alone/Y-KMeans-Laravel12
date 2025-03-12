@@ -1,0 +1,131 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\pt;
+use Illuminate\Http\Request;
+
+class PtController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(Request $request)
+    {
+        $search = $request->get('search');
+        if ($search) {
+            $data['pt'] = pt::where('id', 'like', "%{$search}%")->get();
+        } else {
+            $data['pt'] = pt::all();
+        }
+        return view('layouts.pt.index', $data);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('layouts.pt.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nama_pt' => 'required',
+            'no_hp' => 'required',
+            'email' => 'required',
+            'alamat' => 'required',
+            'logo' => 'required',
+        ]);
+
+            $pt = new pt();
+            $pt->nama_pt = $request->nama_pt;
+            $pt->no_hp = $request->no_hp;
+            $pt->email = $request->email;
+            $pt->alamat = $request->alamat;
+            $pt->logo = $request->logo;
+            if ($pt->save()) {
+                return redirect()->route('pt.index')->with('message', 'Data PT Berhasil Dibuat.');
+            } else {
+                return redirect()->back()->with('error', 'Gagal Menambah Data PT.');
+            }
+            return redirect()->route('pt.index');
+        }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(pt $pt)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit($id)
+    {
+        //
+        $pt = pt::find($id);
+
+        return view('layouts.pt.edit', compact('pt'));    
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, $id)
+{
+    $pt = pt::find($id);
+    if (!$pt) {
+        return redirect()->back()->with('error', 'Data PT tidak ditemukan');
+    }
+
+    try {
+        $validatedData = $request->validate([
+            'nama_pt' => 'required|string|max:255',
+            'no_hp' => 'required|string|max:255',
+            'email' => 'required|email',
+            'alamat' => 'required|string|max:255',
+            'logo' => 'required|string|max:255',
+        ]);
+
+        $pt->nama_pt = $request->nama_pt;
+        $pt->no_hp = $request->no_hp;
+        $pt->email = $request->email;
+        $pt->alamat = $request->alamat;
+        $pt->logo = $request->logo;
+        $pt->save();
+
+        return redirect()->route('pt.index')->with('message', 'Edit Data Berhasil');
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Edit Data Gagal');
+    }
+}
+
+
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($id)
+    {
+        $pt = pt::find($id);
+        if (!$pt) {
+            return redirect()->back()->with('error', 'Perguruan Tinggi tidak ditemukan');
+        }
+    
+        try {
+            $pt->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Delete data gagal');
+        }
+    
+        session()->flash('message', 'Delete data berhasil');
+        return redirect()->route('pt.index');
+    }
+}
