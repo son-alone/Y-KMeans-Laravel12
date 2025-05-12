@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pt;
+use App\Models\Pt;
 use Illuminate\Http\Request;
 
 class PtController extends Controller
@@ -14,9 +14,9 @@ class PtController extends Controller
     {
         $search = $request->get('search');
         if ($search) {
-            $data['pt'] = pt::where('id', 'like', "%{$search}%")->get();
+            $data['pt'] = Pt::where('id', 'like', "%{$search}%")->get();
         } else {
-            $data['pt'] = pt::all();
+            $data['pt'] = Pt::all();
         }
         return view('layouts.pt.index', $data);
     }
@@ -42,7 +42,7 @@ class PtController extends Controller
             'logo' => 'required',
         ]);
 
-            $pt = new pt();
+            $pt = new Pt();
             $pt->nama_pt = $request->nama_pt;
             $pt->no_hp = $request->no_hp;
             $pt->email = $request->email;
@@ -59,7 +59,7 @@ class PtController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(pt $pt)
+    public function show(Pt $pt)
     {
         //
     }
@@ -70,7 +70,7 @@ class PtController extends Controller
     public function edit($id)
     {
         //
-        $pt = pt::find($id);
+        $pt = Pt::find($id);
 
         return view('layouts.pt.edit', compact('pt'));    
     }
@@ -80,7 +80,7 @@ class PtController extends Controller
      */
     public function update(Request $request, $id)
 {
-    $pt = pt::find($id);
+    $pt = Pt::find($id);
     if (!$pt) {
         return redirect()->back()->with('error', 'Data PT tidak ditemukan');
     }
@@ -91,7 +91,7 @@ class PtController extends Controller
             'no_hp' => 'required|string|max:255',
             'email' => 'required|email',
             'alamat' => 'required|string|max:255',
-            'logo' => 'required|string|max:255',
+            'logo' => 'required|file',
         ]);
 
         $pt->nama_pt = $request->nama_pt;
@@ -114,7 +114,7 @@ class PtController extends Controller
      */
     public function destroy($id)
     {
-        $pt = pt::find($id);
+        $pt = Pt::find($id);
         if (!$pt) {
             return redirect()->back()->with('error', 'Perguruan Tinggi tidak ditemukan');
         }

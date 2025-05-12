@@ -18,13 +18,21 @@
 
                     <div class="form-group">
                         <label for="id_yudisium">id_yudisium</label>
-                        <input type="number" name="id_yudisium" id="id_yudisium" class="form-control" value="{{ $detail->id_yudisium }}" maxlength="255" required>
+                        <select name="id_pt" id="id_pt">
+                    @foreach ($data_yudisium as $yudisium)
+                    <option value="{{ $yudisium->id }}" <?php if ($yudisium->id == $detail->id_yudisium) echo "selected"; ?>>{{ $yudisium->id }}</option>
+                    @endforeach
+                </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="id_prodi">id_prodi</label>
-                        <input type="number" name="id_prodi" id="id_prodi" class="form-control" value="{{ $detail->id_prodi }}" maxlength="255" required>
-                    </div>
+                <label for="id_prodi">ID Prodi</label>
+                <select name="id_prodi" id="id_prodi">
+                    @foreach ($data_prodi as $prodi)
+                    <option value="{{ $prodi->id }}" <?php if ($prodi->id == $detail->id_prodi) echo "selected"; ?>>{{ $prodi->nama }}</option>
+                    @endforeach
+                </select>
+            </div>
                     <div class="form-group">
                         <label for="npm">npm</label>
                         <input type="text" name="npm" id="npm" class="form-control" value="{{ $detail->npm }}" maxlength="255" required>

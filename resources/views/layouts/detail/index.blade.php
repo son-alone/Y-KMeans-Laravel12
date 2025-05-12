@@ -56,8 +56,8 @@
                         <tbody>
                             @foreach ($detail as $item)
                                 <tr>
-                                    <td>{{ $item->id_yudisium }}</td>
-                                    <td>{{ $item->id_prodi }}</td>  
+                                    <td>{{ $item->yudisium?->id }}</td>
+                                    <td>{{ $item->prodi?->nama }}</td>  
                                     <td>{{ $item->npm }}</td>
                                     <td>{{ $item->nama_mhs }}</td>
                                     <td>{{ $item->ipk }}</td> 

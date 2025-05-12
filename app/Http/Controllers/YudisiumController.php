@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\yudisium;
+use App\Models\Batch;
+use App\Models\Pt;
+use App\Models\Yudisium;
 use Illuminate\Http\Request;
 
 class YudisiumController extends Controller
@@ -14,9 +16,9 @@ class YudisiumController extends Controller
     {
         $search = $request->get('search');
         if ($search) {
-            $data['yudisium'] = yudisium::where('id', 'like', "%{$search}%")->get();
+            $data['yudisium'] = Yudisium::where('id', 'like', "%{$search}%")->get();
         } else {
-            $data['yudisium'] = yudisium::all();
+            $data['yudisium'] = Yudisium::all();
         }
         return view('layouts.yudisium.index', $data);
     }
@@ -26,7 +28,9 @@ class YudisiumController extends Controller
      */
     public function create()
     {
-        return view('layouts.yudisium.create');
+        $data_batch = Batch::all();
+        $data_pt = Pt::all();
+        return view('layouts.yudisium.create',compact('data_batch','data_pt'));
     }
 
     /**
@@ -42,7 +46,7 @@ class YudisiumController extends Controller
             'id_verifikator' => 'required',
         ]);
 
-        $yudisium = new yudisium();
+        $yudisium = new Yudisium();
         $yudisium->id_batch = $request->id_batch;
         $yudisium->id_pt = $request->id_pt;
         $yudisium->tanggal_yudisium = $request->tanggal_yudisium;
@@ -70,9 +74,11 @@ class YudisiumController extends Controller
     public function edit($id)
     {
         //
-        $yudisium = yudisium::find($id);
+        $yudisium = Yudisium::find($id);
 
-        return view('layouts.yudisium.edit', compact('yudisium'));
+        $data_batch = Batch::all();
+        $data_pt = Pt::all();
+        return view('layouts.yudisium.edit',compact('yudisium','data_batch','data_pt'));
     }
 
     /**
@@ -80,7 +86,7 @@ class YudisiumController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $yudisium = yudisium::find($id);
+        $yudisium = Yudisium::find($id);
         if (!$yudisium) {
             return redirect()->back()->with('error', 'Data Yudisium tidak ditemukan');
         }
@@ -114,7 +120,7 @@ class YudisiumController extends Controller
      */
     public function destroy($id)
     {
-        $yudisium = yudisium::find($id);
+        $yudisium = Yudisium::find($id);
         if (!$yudisium) {
             return redirect()->back()->with('error', 'Yudisium tidak ditemukan');
         }

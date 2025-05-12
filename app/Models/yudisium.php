@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class yudisium extends Model
+class Yudisium extends Model
 {
     use HasFactory;
 
@@ -19,4 +19,12 @@ class yudisium extends Model
         'tanggal_verifikasi',
         'id_verifikator',
     ];
+    public function batch()
+    {
+        return $this->hasOne(batch::class, 'id', 'id_batch');
+    }
+    public function pt()
+    {
+        return $this->hasOne(pt::class, 'id', 'id_pt');
+    }
 }

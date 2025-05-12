@@ -23,7 +23,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // Ambil data yang diperlukan untuk dashboard
+        $totalUniversitas = 171;
+        $totalProgramStudi = 973;
+        $totalMahasiswa = 176430;
+        $totalDosen = 8879;
+        
+        // Grafik data (simulasi)
+        $universitas = ['Sumatera Selatan', 'Lampung', 'Bengkulu', 'Bangka Belitung'];
+        $jumlahMahasiswa = [85, 61, 15, 10];
+        
+        // Mengembalikan tampilan dashboard dengan data yang diperlukan
+        return view('home', compact(
+            'totalUniversitas',
+            'totalProgramStudi',
+            'totalMahasiswa',
+            'totalDosen',
+            'universitas',
+            'jumlahMahasiswa'
+        ));
     }
 
     public function blank()

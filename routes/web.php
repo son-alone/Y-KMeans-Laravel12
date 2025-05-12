@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\ProdiController;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\ClusteringController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,6 +22,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/change-password', [ProfileController::class, 'changepassword'])->name('profile.change-password');
     Route::put('/profile/password', [ProfileController::class, 'password'])->name('profile.password');
     Route::get('/blank-page', [App\Http\Controllers\HomeController::class, 'blank'])->name('blank');
+
+    // Routing untuk menampilkan daftar provinsi
+Route::get('/clustering', [ClusteringController::class, 'index'])->name('clustering.index');
+
+// Routing untuk menampilkan hasil clustering berdasarkan provinsi yang dipilih
+Route::get('/clustering/{provinsi_id}', [ClusteringController::class, 'clusterMahasiswa'])->name('clustering.cluster');
+
+Route::get('/mahasiswa/tambah', [MahasiswaController::class, 'create']);
+Route::post('/mahasiswa/tambah', [MahasiswaController::class, 'store']);
+Route::get('/mahasiswa/{id}/edit', [MahasiswaController::class, 'edit']);
+Route::post('/mahasiswa/{id}/update', [MahasiswaController::class, 'update']);
+Route::delete('/mahasiswa/{id}', [MahasiswaController::class, 'destroy']);
+
 
     Route::get('/hakakses', [App\Http\Controllers\HakaksesController::class, 'index'])->name('hakakses.index')->middleware('superadmin');
     Route::get('/hakakses/edit/{id}', [App\Http\Controllers\HakaksesController::class, 'edit'])->name('hakakses.edit')->middleware('superadmin');

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\batch;
+use App\Models\Batch;
 use Illuminate\Http\Request;
 
 class BatchController extends Controller
@@ -14,9 +14,9 @@ class BatchController extends Controller
     {
         $search = $request->get('search');
         if ($search) {
-            $data['batch'] = batch::where('id', 'like', "%{$search}%")->get();
+            $data['batch'] = Batch::where('id', 'like', "%{$search}%")->get();
         } else {
-            $data['batch'] = batch::all();
+            $data['batch'] = Batch::all();
         }
         return view('layouts.batch.index', $data);
     }
@@ -40,7 +40,7 @@ class BatchController extends Controller
             'range_akhir' => 'required',
         ]);
 
-            $batch = new batch();
+            $batch = new Batch();
             $batch->nama = $request->nama;
             $batch->range_awal = $request->range_awal;
             $batch->range_akhir = $request->range_awal;
@@ -55,7 +55,7 @@ class BatchController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(batch $batch)
+    public function show(Batch $batch)
     {
         //
     }
@@ -66,7 +66,7 @@ class BatchController extends Controller
     public function edit($id)
     {
         //
-        $batch = batch::find($id);
+        $batch = Batch::find($id);
 
         return view('layouts.batch.edit', compact('batch'));    
     }
@@ -76,7 +76,7 @@ class BatchController extends Controller
      */
     public function update(Request $request, $id)
 {
-    $batch = batch::find($id);
+    $batch = Batch::find($id);
     if (!$batch) {
         return redirect()->back()->with('error', 'Data Batch tidak ditemukan');
     }
@@ -106,7 +106,7 @@ class BatchController extends Controller
      */
     public function destroy($id)
     {
-        $batch = batch::find($id);
+        $batch = Batch::find($id);
         if (!$batch) {
             return redirect()->back()->with('error', 'Batch tidak ditemukan');
         }

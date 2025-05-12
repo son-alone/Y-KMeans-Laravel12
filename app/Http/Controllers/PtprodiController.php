@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\prodi;
-use App\Models\pt;
-use App\Models\ptprodi;
+use App\Models\Pt;
+use App\Models\Prodi;
+use App\Models\Ptprodi;
 use Illuminate\Http\Request;
 
 class PtprodiController extends Controller
@@ -16,9 +16,9 @@ class PtprodiController extends Controller
     {
         $search = $request->get('search');
         if ($search) {
-            $data['ptprodi'] = ptprodi::where('id', 'like', "%{$search}%")->get();
+            $data['ptprodi'] = Ptprodi::where('id', 'like', "%{$search}%")->get();
         } else {
-            $data['ptprodi'] = ptprodi::all();
+            $data['ptprodi'] = Ptprodi::all();
         }
         return view('layouts.ptprodi.index', $data);
     }
@@ -28,9 +28,9 @@ class PtprodiController extends Controller
      */
     public function create()
     {
-        $data_prodi = prodi::all();
-        $data_pt = pt::all();
-        return view('layouts.ptprodi.create',compact('data_prodi','data_pt'));
+        $data_pt = Pt::all();
+        $data_prodi = Prodi::all();
+        return view('layouts.ptprodi.create',compact('data_pt','data_prodi'));
     }
 
     /**
@@ -49,7 +49,7 @@ class PtprodiController extends Controller
             'jumlah_mahasiswa' => 'required',
         ]);
 
-            $ptprodi = new ptprodi();
+            $ptprodi = new Ptprodi();
             $ptprodi->id_pt = $request->id_pt;
             $ptprodi->id_prodi = $request->id_prodi;
             $ptprodi->jenjang = $request->jenjang;
@@ -80,9 +80,11 @@ class PtprodiController extends Controller
     public function edit($id)
     {
         //
-        $ptprodi = ptprodi::find($id);
+        $ptprodi = Ptprodi::find($id);
 
-        return view('layouts.ptprodi.edit', compact('ptprodi'));    
+        $data_pt = Pt::all();
+        $data_prodi = Prodi::all();
+        return view('layouts.ptprodi.edit',compact('ptprodi','data_pt','data_prodi'));    
     }
 
     /**
@@ -90,7 +92,7 @@ class PtprodiController extends Controller
      */
     public function update(Request $request, $id)
 {
-    $ptprodi = ptprodi::find($id);
+    $ptprodi = Ptprodi::find($id);
     if (!$ptprodi) {
         return redirect()->back()->with('error', 'Data PT Prodi tidak ditemukan');
     }
@@ -131,7 +133,7 @@ class PtprodiController extends Controller
      */
     public function destroy($id)
     {
-        $ptprodi = ptprodi::find($id);
+        $ptprodi = Ptprodi::find($id);
         if (!$ptprodi) {
             return redirect()->back()->with('error', 'Prodi Perguruan Tinggi tidak ditemukan');
         }

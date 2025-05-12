@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\pt;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prodi', function (Blueprint $table) {
+        Schema::create('mahasiswa', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pt_id')->constrained('pt'); // Hubungan dengan perguruan tinggi
+            $table->foreignId('prodi_id')->constrained('prodi'); // Hubungan dengan prodi
             $table->string('nama');
+            $table->float('ipk');
+            $table->integer('jumlah_sks');
+            $table->date('tanggal_masuk');
+            $table->date('tanggal_lulus');
+            $table->enum('batch', ['batch_1', 'batch_2']); // Batch 1 atau Batch 2
             $table->timestamps();
         });
         
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('prodi');
+        Schema::dropIfExists('mahasiswa');
     }
 };

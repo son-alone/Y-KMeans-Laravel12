@@ -29,12 +29,20 @@
                     @csrf
                     <div class="form-group">
                         <label for="id_batch">id_batch</label>
-                        <input type="number" name="id_batch" id="id_batch" class="form-control">
+                    <select name="id_batch" id="id_batch">
+                        @foreach ($data_batch as $batch)
+                        <option value="{{ $batch->id }}">{{ $batch->nama }}</option>
+                        @endforeach
+                    </select>
                     </div>
 
                     <div class="form-group">
                         <label for="id_pt">id_pt</label>
-                        <input type="number" name="id_pt" id="id_pt" class="form-control">
+                    <select name="id_pt" id="id_pt">
+                        @foreach ($data_pt as $pt)
+                        <option value="{{ $pt->id }}">{{ $pt->nama_pt }}</option>
+                        @endforeach
+                    </select>
                     </div>
                     <div class="form-group">
                         <label for="tanggal_yudisium">tanggal_yudisium</label>

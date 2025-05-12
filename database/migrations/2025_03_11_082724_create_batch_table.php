@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('batch', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('range_awal');
-            $table->string('range_akhir');
+            $table->string('nama');  // Nama batch (misalnya 'Batch 1 2025')
+            $table->unsignedBigInteger('universitas_id');  // Relasi ke universitas
+            $table->foreign('universitas_id')->references('id')->on('universitas')->onDelete('cascade');
             $table->timestamps();
         });
     }

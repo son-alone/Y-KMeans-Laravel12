@@ -2,10 +2,10 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-        <a href="">STISLA</a>
+        <a href="">LLDIKTI2</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-        <a href="">STISLA</a>
+        <a href="">LLDIKTI2</a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
@@ -26,10 +26,20 @@
             <li class="{{ Request::is('profile/change-password') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('profile/change-password') }}"><i class="fas fa-key"></i> <span>Ganti Password</span></a>
             </li>
-            <li class="menu-header">Starter</li>
+            <li class="menu-header">Data Kit</li>
             <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('blank-page') }}"><i class="far fa-square"></i> <span>Blank Page</span></a>
             </li>
+
+            <li class="{{ Request::is('mahasiswa/create') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ url('mahasiswa/create') }}">
+        <i class="fas fa-plus"></i> <span>Tambah Data Mahasiswa</span>
+    </a>
+</li>
+
+
+
+
             <li class="{{ Request::is('prodi') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('prodi') }}"><i class="fas fa-university"></i> <span> Data Prodi </span></a>
             </li>

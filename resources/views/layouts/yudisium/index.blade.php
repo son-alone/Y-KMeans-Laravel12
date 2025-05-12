@@ -53,8 +53,8 @@
                         <tbody>
                             @foreach ($yudisium as $item)
                                 <tr>
-                                    <td>{{ $item->id_batch }}</td>
-                                    <td>{{ $item->id_pt }}</td>  
+                                    <td>{{ $item->batch?->nama }}</td>
+                                    <td>{{ $item->pt?->nama_pt }}</td>  
                                     <td>{{ $item->tanggal_yudisium }}</td>
                                     <td>{{ $item->tanggal_verifikasi }}</td>
                                     <td>{{ $item->id_verifikator }}</td>             

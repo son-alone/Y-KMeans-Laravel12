@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\prodi;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
 
 class ProdiController extends Controller
@@ -14,10 +14,14 @@ class ProdiController extends Controller
     {
         $search = $request->get('search');
         if ($search) {
-            $data['prodi'] = prodi::where('id', 'like', "%{$search}%")->get();
+            $data['prodi'] = Prodi::where('id', 'like', "%{$search}%")
+                ->orderBy('nama', 'asc')  // Menambahkan pengurutan berdasarkan nama abjad
+                ->get();
         } else {
-            $data['prodi'] = prodi::all();
+            $data['prodi'] = Prodi::orderBy('nama', 'asc')  // Menambahkan pengurutan berdasarkan nama abjad
+                ->get();
         }
+    
         return view('layouts.prodi.index', $data);
     }
 
@@ -39,7 +43,7 @@ class ProdiController extends Controller
             'keterangan' => 'required',
         ]);
 
-            $prodi = new prodi();
+            $prodi = new Prodi();
             $prodi->nama = $request->nama;
             $prodi->keterangan = $request->keterangan;
             if ($prodi->save()) {
@@ -53,7 +57,7 @@ class ProdiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(prodi $prodi)
+    public function show(Prodi $prodi)
     {
         //
     }
@@ -64,7 +68,7 @@ class ProdiController extends Controller
     public function edit($id)
     {
         //
-        $prodi = prodi::find($id);
+        $prodi = Prodi::find($id);
 
         return view('layouts.prodi.edit', compact('prodi'));    
     }
@@ -74,7 +78,7 @@ class ProdiController extends Controller
      */
     public function update(Request $request, $id)
 {
-    $prodi = prodi::find($id);
+    $prodi = Prodi::find($id);
     if (!$prodi) {
         return redirect()->back()->with('error', 'Data Prodi tidak ditemukan');
     }
@@ -102,7 +106,7 @@ class ProdiController extends Controller
      */
     public function destroy($id)
     {
-        $prodi = prodi::find($id);
+        $prodi = Prodi::find($id);
         if (!$prodi) {
             return redirect()->back()->with('error', 'Prodi tidak ditemukan');
         }

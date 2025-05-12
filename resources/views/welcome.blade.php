@@ -119,11 +119,13 @@
 
   <!-- HERO SECTION -->
   <section class="hero">
-    <h1 class="animate__animated animate__fadeInDown">Welcome to laravel 12</h1>
+    <h1 class="animate__animated animate__fadeInDown">SISPEK Yudisium</h1>
     <p class="animate__animated animate__fadeInUp">
-      Experience the modern, sleek, and powerful Laravel framework with a stylish design tailored for developers.
+    Sistem Pemeriksaan Persyaratan Kelulusan Yudisium
     </p>
-    <a href="{{ route('login') }}" class="btn btn-cta animate__animated animate__zoomIn">Get Started</a>
+    <a href="{{ route('login') }}" class="btn btn-cta animate__animated animate__zoomIn">Login</a>
+    <p></p>
+    <a href="{{ route('register') }}" class="btn btn-cta animate__animated animate__zoomIn">Register</a>
   </section>
 
   <!-- FEATURES SECTION -->

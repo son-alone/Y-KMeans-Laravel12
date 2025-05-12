@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\detail;
+use App\Models\Yudisium;
+use App\Models\Prodi;
+use App\Models\Detail;
 use Illuminate\Http\Request;
 
 class DetailController extends Controller
@@ -14,9 +16,9 @@ class DetailController extends Controller
     {
         $search = $request->get('search');
         if ($search) {
-            $data['detail'] = detail::where('id', 'like', "%{$search}%")->get();
+            $data['detail'] = Detail::where('id', 'like', "%{$search}%")->get();
         } else {
-            $data['detail'] = detail::all();
+            $data['detail'] = Detail::all();
         }
         return view('layouts.detail.index', $data);
     }
@@ -26,7 +28,9 @@ class DetailController extends Controller
      */
     public function create()
     {
-        return view('layouts.detail.create');
+        $data_yudisium = Yudisium::all();
+        $data_prodi = Prodi::all();
+        return view('layouts.detail.create',compact('data_yudisium','data_prodi'));
     }
 
     /**
@@ -45,7 +49,7 @@ class DetailController extends Controller
         'jk' => 'required',
         ]);
 
-        $detail = new detail();
+        $detail = new Detail();
         $detail->id_yudisium = $request->id_yudisium;
         $detail->id_prodi = $request->id_prodi;
         $detail->npm = $request->npm;
@@ -65,7 +69,7 @@ class DetailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(detail $detail)
+    public function show(Detail $detail)
     {
         //
     }
@@ -76,9 +80,11 @@ class DetailController extends Controller
     public function edit($id)
     {
         //
-        $detail = detail::find($id);
+        $detail = Detail::find($id);
 
-        return view('layouts.detail.edit', compact('detail'));
+        $data_yudisium = Yudisium::all();
+        $data_prodi = Prodi::all();
+        return view('layouts.detail.edit',compact('detail','data_yudisium','data_prodi'));
     }
 
     /**
@@ -86,7 +92,7 @@ class DetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $detail = detail::find($id);
+        $detail = Detail::find($id);
         if (!$detail) {
             return redirect()->back()->with('error', 'Data Detail Yudisium tidak ditemukan');
         }
@@ -126,7 +132,7 @@ class DetailController extends Controller
      */
     public function destroy($id)
     {
-        $detail = detail::find($id);
+        $detail = Detail::find($id);
         if (!$detail) {
             return redirect()->back()->with('error', 'Detail Yudisium tidak ditemukan');
         }
