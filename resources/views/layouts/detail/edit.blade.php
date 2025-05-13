@@ -16,16 +16,16 @@
                 @csrf
                 @method('PUT')
 
-                    <div class="form-group">
-                        <label for="id_yudisium">id_yudisium</label>
-                        <select name="id_pt" id="id_pt">
-                    @foreach ($data_yudisium as $yudisium)
-                    <option value="{{ $yudisium->id }}" <?php if ($yudisium->id == $detail->id_yudisium) echo "selected"; ?>>{{ $yudisium->id }}</option>
+            <div class="form-group">
+                <label for="id_pt">ID PT</label>
+                <select name="id_pt" id="id_pt">
+                    @foreach ($data_pt as $pt)
+                    <option value="{{ $pt->id }}" <?php if ($pt->id == $detail->id_pt) echo "selected"; ?>>{{ $pt->nama_pt }}</option>
                     @endforeach
                 </select>
-                    </div>
+            </div>
 
-                    <div class="form-group">
+            <div class="form-group">
                 <label for="id_prodi">ID Prodi</label>
                 <select name="id_prodi" id="id_prodi">
                     @foreach ($data_prodi as $prodi)
@@ -33,6 +33,7 @@
                     @endforeach
                 </select>
             </div>
+            
                     <div class="form-group">
                         <label for="npm">npm</label>
                         <input type="text" name="npm" id="npm" class="form-control" value="{{ $detail->npm }}" maxlength="255" required>

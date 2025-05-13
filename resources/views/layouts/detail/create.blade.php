@@ -26,15 +26,15 @@
 
             <div class="section-body">
             <form action="{{ route('detail.store') }}" method="POST">
-                    @csrf
-                    <div class="form-group">
-                        <label for="id_yudisium">id_yudisium</label>
-                        <select name="id_yudisium" id="id_yudisium">
-                        @foreach ($data_yudisium as $yudisium)
-                        <option value="{{ $yudisium->id }}">{{ $yudisium->id }}</option>
+                @csrf
+                <div class="form-group">
+                    <label for="id_pt">ID PT</label>
+                    <select name="id_pt" id="id_pt">
+                        @foreach ($data_pt as $pt)
+                        <option value="{{ $pt->id }}">{{ $pt->nama_pt }}</option>
                         @endforeach
                     </select>
-                    </div>
+                </div>
 
                     <div class="form-group">
                     <label for="id_prodi">ID Prodi</label>

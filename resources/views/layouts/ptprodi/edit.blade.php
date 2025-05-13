@@ -33,6 +33,7 @@
                     @endforeach
                 </select>
             </div>
+            
             <div class="form-group">
                 <label for="jenjang">Jenjang</label>
                 <input type="text" name="jenjang" id="jenjang" class="form-control" value="{{ $ptprodi->jenjang }}" maxlength="255" required>

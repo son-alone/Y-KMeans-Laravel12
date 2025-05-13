@@ -12,8 +12,8 @@ class Provinsi extends Model
     // Tentukan nama tabel jika tidak sesuai dengan konvensi
     protected $table = 'provinsi';  // Gantilah dengan nama tabel sesuai database
 
-    public function perguruanTinggi()
+    public function Pt()
     {
-        return $this->hasMany(PerguruanTinggi::class);
+        return $this->hasMany(Pt::class);
     }
 }

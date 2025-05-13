@@ -23,12 +23,12 @@ class Ptprodi extends Model
         'jumlah_mahasiswa',
     ];
 
-    public function prodi()
+    public function Prodi()
     {
-        return $this->hasOne(prodi::class, 'id', 'id_prodi');
+        return $this->hasOne(Prodi::class, 'id', 'id_prodi');
     }
-    public function pt()
+    public function Pt()
     {
-        return $this->hasOne(pt::class, 'id', 'id_pt');
+        return $this->hasOne(Pt::class, 'id', 'id_pt');
     }
 }

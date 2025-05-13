@@ -19,12 +19,12 @@ class Yudisium extends Model
         'tanggal_verifikasi',
         'id_verifikator',
     ];
-    public function batch()
+    public function Batch()
     {
-        return $this->hasOne(batch::class, 'id', 'id_batch');
+        return $this->hasOne(Batch::class, 'id', 'id_batch');
     }
-    public function pt()
+    public function Pt()
     {
-        return $this->hasOne(pt::class, 'id', 'id_pt');
+        return $this->hasOne(Pt::class, 'id', 'id_pt');
     }
 }

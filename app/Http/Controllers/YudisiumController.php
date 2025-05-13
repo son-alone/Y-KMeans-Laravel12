@@ -63,7 +63,7 @@ class YudisiumController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(yudisium $yudisium)
+    public function show(Yudisium $yudisium)
     {
         //
     }

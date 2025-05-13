@@ -42,7 +42,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Id Yudisium</th>
+                                <th>Id Pt</th>
                                 <th>Id Prodi</th>
                                 <th>NPM</th>
                                 <th>Nama Mahasiswa</th>
@@ -56,7 +56,7 @@
                         <tbody>
                             @foreach ($detail as $item)
                                 <tr>
-                                    <td>{{ $item->yudisium?->id }}</td>
+                                    <td>{{ $item->pt?->nama_pt }}</td>
                                     <td>{{ $item->prodi?->nama }}</td>  
                                     <td>{{ $item->npm }}</td>
                                     <td>{{ $item->nama_mhs }}</td>

@@ -12,7 +12,7 @@ class Mahasiswa extends Model
     // Menentukan nama tabel yang digunakan
     protected $table = 'mahasiswa'; // Pastikan nama tabel sesuai dengan yang ada di database
 
-    public function programStudi()
+    public function Prodi()
     {
         return $this->belongsTo(Prodi::class);
     }

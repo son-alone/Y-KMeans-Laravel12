@@ -69,7 +69,7 @@ class PtprodiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ptprodi $ptprodi)
+    public function show(Ptprodi $ptprodi)
     {
         //
     }
@@ -109,7 +109,6 @@ class PtprodiController extends Controller
             'jumlah_mahasiswa' => 'required|string|max:255',
         ]);
 
-        
             $ptprodi->id_pt = $request->id_pt;
             $ptprodi->id_prodi = $request->id_prodi;
             $ptprodi->jenjang = $request->jenjang;

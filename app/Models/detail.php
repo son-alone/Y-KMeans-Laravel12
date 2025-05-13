@@ -13,7 +13,7 @@ class Detail extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'id_yudisium',
+        'id_pt',
         'id_prodi',
         'npm',
         'nama_mhs',
@@ -22,12 +22,12 @@ class Detail extends Model
         'tgl_masuk',
         'jk',
     ];
-    public function prodi()
+    public function Prodi()
     {
-        return $this->hasOne(prodi::class, 'id', 'id_prodi');
+        return $this->hasOne(Prodi::class, 'id', 'id_prodi');
     }
-    public function yudisium()
+    public function Pt()
     {
-        return $this->hasOne(yudisium::class, 'id', 'id_yudisium');
+        return $this->hasOne(Pt::class, 'id', 'id_pt');
     }
 }

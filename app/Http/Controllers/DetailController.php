@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Yudisium;
+use App\Models\Pt;
 use App\Models\Prodi;
 use App\Models\Detail;
 use Illuminate\Http\Request;
@@ -28,9 +28,9 @@ class DetailController extends Controller
      */
     public function create()
     {
-        $data_yudisium = Yudisium::all();
+        $data_pt = Pt::all();
         $data_prodi = Prodi::all();
-        return view('layouts.detail.create',compact('data_yudisium','data_prodi'));
+        return view('layouts.detail.create',compact('data_pt','data_prodi'));
     }
 
     /**
@@ -39,7 +39,7 @@ class DetailController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-        'id_yudisium' => 'required',
+        'id_pt' => 'required',
         'id_prodi' => 'required',
         'npm' => 'required',
         'nama_mhs' => 'required',
@@ -50,7 +50,7 @@ class DetailController extends Controller
         ]);
 
         $detail = new Detail();
-        $detail->id_yudisium = $request->id_yudisium;
+        $detail->id_pt = $request->id_pt;
         $detail->id_prodi = $request->id_prodi;
         $detail->npm = $request->npm;
         $detail->nama_mhs = $request->nama_mhs;
@@ -82,9 +82,9 @@ class DetailController extends Controller
         //
         $detail = Detail::find($id);
 
-        $data_yudisium = Yudisium::all();
+        $data_pt = Pt::all();
         $data_prodi = Prodi::all();
-        return view('layouts.detail.edit',compact('detail','data_yudisium','data_prodi'));
+        return view('layouts.detail.edit',compact('detail','data_pt','data_prodi'));
     }
 
     /**
@@ -99,7 +99,7 @@ class DetailController extends Controller
 
         try {
             $validatedData = $request->validate([
-        'id_yudisium' => 'required|string|max:255',
+        'id_pt' => 'required|string|max:255',
         'id_prodi' => 'required|string|max:255',
         'npm' => 'required|string|max:255',
         'nama_mhs' => 'required|string|max:255',
@@ -109,7 +109,7 @@ class DetailController extends Controller
         'jk' => 'required|string|max:255',
             ]);
 
-        $detail->id_yudisium = $request->id_yudisium;
+        $detail->id_pt = $request->id_pt;
         $detail->id_prodi = $request->id_prodi;
         $detail->npm = $request->npm;
         $detail->nama_mhs = $request->nama_mhs;
