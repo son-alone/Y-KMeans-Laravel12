@@ -17,6 +17,15 @@
                 @method('PUT')
 
                 <div class="form-group">
+                <label for="id_provinsi">ID Provinsi</label>
+                <select name="id_provinsi" id="id_provinsi">
+                    @foreach ($data_provinsi as $provinsi)
+                    <option value="{{ $provinsi->id }}" <?php if ($provinsi->id == $pt->id_provinsi) echo "selected"; ?>>{{ $provinsi->nama_provinsi }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+                <div class="form-group">
                     <label for="nama_pt">Nama PT</label>
                     <input type="text" name="nama_pt" id="nama_pt" class="form-control" value="{{ $pt->nama_pt }}" maxlength="255" required>
                 </div>
@@ -38,7 +47,7 @@
 
                 <div class="form-group">
                     <label for="logo">Logo</label>
-                    <input type="text" name="logo" id="logo" class="form-control" value="{{ $pt->logo }}" required>
+                    <input type="file" name="logo" id="logo" class="form-control" value="{{ $pt->logo }}" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Update</button>

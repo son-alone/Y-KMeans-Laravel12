@@ -27,18 +27,10 @@
                 <a class="nav-link" href="{{ url('profile/change-password') }}"><i class="fas fa-key"></i> <span>Ganti Password</span></a>
             </li>
             <li class="menu-header">Data Kit</li>
-            <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('blank-page') }}"><i class="far fa-square"></i> <span>Blank Page</span></a>
+
+            <li class="{{ Request::is('provinsi') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('provinsi') }}"><i class="fas fa-university"></i> <span> Data Provinsi </span></a>
             </li>
-
-            <li class="{{ Request::is('mahasiswa/create') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ url('mahasiswa/create') }}">
-        <i class="fas fa-plus"></i> <span>Tambah Data Mahasiswa</span>
-    </a>
-</li>
-
-
-
 
             <li class="{{ Request::is('prodi') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('prodi') }}"><i class="fas fa-university"></i> <span> Data Prodi </span></a>
@@ -59,6 +51,9 @@
                 <a class="nav-link" href="{{ url('detail') }}"><i class="fas fa-university"></i> <span> Data Detail Yudisium </span></a>
             </li>
             <li class="menu-header">Examples</li>
+            <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('blank-page') }}"><i class="far fa-square"></i> <span>Blank Page</span></a>
+            </li>
             <li class="{{ Request::is('table-example') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('table-example') }}"><i class="fas fa-table"></i> <span>Table Example</span></a>
             </li>

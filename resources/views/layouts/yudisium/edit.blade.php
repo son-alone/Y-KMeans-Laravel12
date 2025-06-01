@@ -40,13 +40,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="tanggal_verifikasit">tanggal_verifikasi</label>
-                        <input type="date" name="tanggal_verifikasi" id="tanggal_verifikasi" class="form-control" value="{{ $yudisium->tanggal_verifikasi }}" maxlength="255" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="id_verifikator">id_verifikator</label>
-                        <input type="number" name="id_verifikator" id="id_verifikator" class="form-control" value="{{ $yudisium->id_verifikator }}" maxlength="255" required>
-                    </div>
+                    <label for="file">Upload File</label>
+                    <input type="file" name="file" id="file" class="form-control" value="{{ $yudisium->file }}" required>
+                </div>
 
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>

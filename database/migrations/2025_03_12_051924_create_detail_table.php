@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('detail', function (Blueprint $table) {
             $table->id();
+            $table->string('id_yudisium');
             $table->string('id_pt');
             $table->string('id_prodi');
+            $table->string('id_batch');
             $table->string('npm');
             $table->string('nama_mhs');
             $table->double('ipk');
             $table->string('jml_sks');
             $table->date('tgl_masuk');
+            $table->date('tgl_lulus');
             $table->string('jk');
             $table->timestamps();
         });

@@ -16,6 +16,7 @@ class Yudisium extends Model
         'id_batch',
         'id_pt',
         'tanggal_yudisium',
+        'file',
         'tanggal_verifikasi',
         'id_verifikator',
     ];

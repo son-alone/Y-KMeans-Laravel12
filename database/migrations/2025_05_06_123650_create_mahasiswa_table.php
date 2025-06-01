@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('mahasiswa', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('prodi_id')->constrained('prodi'); // Hubungan dengan prodi
             $table->string('nama');
             $table->float('ipk');
             $table->integer('jumlah_sks');

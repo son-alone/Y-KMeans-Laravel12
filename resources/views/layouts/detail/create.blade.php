@@ -28,6 +28,15 @@
             <form action="{{ route('detail.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
+                    <label for="id_yudisium">ID Yudisium</label>
+                    <select name="id_yudisium" id="id_yudisium">
+                        @foreach ($data_yudisium as $yudisium)
+                        <option value="{{ $yudisium->id }}">{{ $yudisium->id }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label for="id_pt">ID PT</label>
                     <select name="id_pt" id="id_pt">
                         @foreach ($data_pt as $pt)
@@ -44,6 +53,16 @@
                         @endforeach
                     </select>
                     </div>
+
+                    <div class="form-group">
+                    <label for="id_batch">ID Batch</label>
+                    <select name="id_batch" id="id_batch">
+                        @foreach ($data_batch as $batch)
+                        <option value="{{ $batch->id }}">{{ $batch->nama }}</option>
+                        @endforeach
+                    </select>
+                    </div>
+                    
                     <div class="form-group">
                         <label for="npm">npm</label>
                         <input type="text" name="npm" id="npm" class="form-control">
@@ -63,6 +82,10 @@
                     <div class="form-group">
                         <label for="tgl_masuk">tgl_masuk</label>
                         <input type="date" name="tgl_masuk" id="tgl_masuk" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="tgl_lulus">tgl_lulus</label>
+                        <input type="date" name="tgl_lulus" id="tgl_lulus" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="jk">jk</label>

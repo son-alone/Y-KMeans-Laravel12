@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pt;
+use App\Models\Provinsi;
 use Illuminate\Http\Request;
 
 class PtController extends Controller
@@ -26,7 +27,8 @@ class PtController extends Controller
      */
     public function create()
     {
-        return view('layouts.pt.create');
+        $data_provinsi = Provinsi::all();
+        return view('layouts.pt.create',compact('data_provinsi'));
     }
 
     /**
@@ -35,6 +37,7 @@ class PtController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'id_provinsi' => 'required',
             'nama_pt' => 'required',
             'no_hp' => 'required',
             'email' => 'required',
@@ -43,6 +46,7 @@ class PtController extends Controller
         ]);
 
             $pt = new Pt();
+            $pt->id_provinsi = $request->id_provinsi;
             $pt->nama_pt = $request->nama_pt;
             $pt->no_hp = $request->no_hp;
             $pt->email = $request->email;
@@ -72,7 +76,9 @@ class PtController extends Controller
         //
         $pt = Pt::find($id);
 
-        return view('layouts.pt.edit', compact('pt'));    
+        $data_provinsi = Provinsi::all();
+
+        return view('layouts.pt.edit', compact('pt', 'data_provinsi'));    
     }
 
     /**
@@ -87,6 +93,7 @@ class PtController extends Controller
 
     try {
         $validatedData = $request->validate([
+            'id_provinsi' => 'required|string|max:255',
             'nama_pt' => 'required|string|max:255',
             'no_hp' => 'required|string|max:255',
             'email' => 'required|email',
@@ -94,6 +101,7 @@ class PtController extends Controller
             'logo' => 'required|file',
         ]);
 
+        $pt->id_provinsi = $request->id_provinsi;
         $pt->nama_pt = $request->nama_pt;
         $pt->no_hp = $request->no_hp;
         $pt->email = $request->email;

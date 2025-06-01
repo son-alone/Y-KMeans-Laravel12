@@ -27,6 +27,16 @@
             <div class="section-body">
             <form action="{{ route('pt.store') }}" method="POST">
                     @csrf
+
+                    <div class="form-group">
+                    <label for="id_provinsi">ID Provinsi</label>
+                    <select name="id_provinsi" id="id_provinsi">
+                        @foreach ($data_provinsi as $provinsi)
+                        <option value="{{ $provinsi->id }}">{{ $provinsi->nama_provinsi }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                     <div class="form-group">
                         <label for="nama_pt">Nama PT</label>
                         <input type="text" name="nama_pt" id="nama_pt" class="form-control">

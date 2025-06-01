@@ -44,19 +44,16 @@
                         @endforeach
                     </select>
                     </div>
+                    
                     <div class="form-group">
                         <label for="tanggal_yudisium">tanggal_yudisium</label>
                         <input type="date" name="tanggal_yudisium" id="tanggal_yudisium" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="tanggal_verifikasi">tanggal_verifikasi</label>
-                        <input type="date" name="tanggal_verifikasi" id="tanggal_verifikasi" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="id_verifikator">id_verifikator</label>
-                        <input type="number" name="id_verifikator" id="id_verifikator" class="form-control">
-                    </div>
+                    <label for="file">Upload File</label>
+                    <input type="file" name="file" id="file" class="form-control">
+                </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

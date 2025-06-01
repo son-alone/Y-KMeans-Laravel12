@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Pt')
+@section('title', 'Provinsi')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -10,7 +10,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Perguruan Tinggi</h1>
+                <h1>Provinsi</h1>
             </div>
             
             @if (session('message'))
@@ -28,8 +28,8 @@
                 <div class="table-responsive">
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <a href="{{ route('pt.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
-                            <form action="{{ route('pt.index') }}" method="GET">
+                            <a href="{{ route('provinsi.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
+                            <form action="{{ route('provinsi.index') }}" method="GET">
                                 <div class="input-group">
                                     <input type="text" name="search" class="form-control" placeholder="Cari Berdasarkan Kode Pt...">
                                     <div class="input-group-append">
@@ -42,27 +42,19 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>ID Provinsi</th>
-                                <th>Nama PT</th>
-                                <th>No Hp</th>
-                                <th>Email</th>
-                                <th>Alamat</th>
+                                <th>Nama Provinsi</th>
                                 <th>Logo</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($pt as $item)
+                            @foreach ($provinsi as $item)
                                 <tr>
-                                    <td>{{ $item->provinsi?->nama_provinsi }}</td>
-                                    <td>{{ $item->nama_pt }}</td>
-                                    <td>{{ $item->no_hp }}</td>  
-                                    <td>{{ $item->email }}</td>
-                                    <td>{{ $item->alamat }}</td>
+                                    <td>{{ $item->nama_provinsi }}</td>
                                     <td>{{ $item->logo }}</td>             
                                     <td>
-                                        <a href="{{ route('pt.edit', $item->id) }}" class="btn btn-primary">Edit</a>
-                                        <form action="{{ route('pt.delete', $item->id) }}" method="POST" style="display: inline-block;">
+                                        <a href="{{ route('provinsi.edit', $item->id) }}" class="btn btn-primary">Edit</a>
+                                        <form action="{{ route('provinsi.delete', $item->id) }}" method="POST" style="display: inline-block;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>

@@ -9,11 +9,11 @@ class Provinsi extends Model
 {
     use HasFactory;
 
-    // Tentukan nama tabel jika tidak sesuai dengan konvensi
-    protected $table = 'provinsi';  // Gantilah dengan nama tabel sesuai database
+    protected $table = 'provinsi';
+    protected $primaryKey = 'id';
 
-    public function Pt()
-    {
-        return $this->hasMany(Pt::class);
-    }
+    protected $fillable = [
+        'nama_provinsi',
+        'logo',
+    ];
 }

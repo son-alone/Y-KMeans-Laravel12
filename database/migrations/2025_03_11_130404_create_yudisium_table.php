@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('id_batch');
             $table->string('id_pt');
             $table->date('tanggal_yudisium');
+            $table->string('file');
             $table->date('tanggal_verifikasi');
             $table->string('id_verifikator');
             $table->timestamps();

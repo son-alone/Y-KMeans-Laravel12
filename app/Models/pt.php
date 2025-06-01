@@ -13,10 +13,15 @@ class Pt extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
+        'id_provinsi',
         'nama_pt',
         'no_hp',
         'email',
         'alamat',
         'logo',
     ];
+    public function Provinsi()
+    {
+        return $this->hasOne(Provinsi::class, 'id', 'id_provinsi');
+    }
 }

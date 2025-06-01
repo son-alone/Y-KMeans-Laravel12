@@ -6,6 +6,7 @@ use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ClusteringController;
+use App\Http\Controllers\DetailController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,23 +24,34 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile/password', [ProfileController::class, 'password'])->name('profile.password');
     Route::get('/blank-page', [App\Http\Controllers\HomeController::class, 'blank'])->name('blank');
 
+// routes/web.php
+Route::post('/import', [DetailController::class, 'import'])->name('importExcel');
+
+
     // Routing untuk menampilkan daftar provinsi
-Route::get('/clustering', [ClusteringController::class, 'index'])->name('clustering.index');
+    Route::get('/clustering', [ClusteringController::class, 'index'])->name('clustering.index');
 
-// Routing untuk menampilkan hasil clustering berdasarkan provinsi yang dipilih
-Route::get('/clustering/{provinsi_id}', [ClusteringController::class, 'clusterMahasiswa'])->name('clustering.cluster');
+    // Routing untuk menampilkan hasil clustering berdasarkan provinsi yang dipilih
+    Route::get('/clustering/{provinsi_id}', [ClusteringController::class, 'clusterMahasiswa'])->name('clustering.cluster');
 
-Route::get('/mahasiswa/tambah', [MahasiswaController::class, 'create']);
-Route::post('/mahasiswa/tambah', [MahasiswaController::class, 'store']);
-Route::get('/mahasiswa/{id}/edit', [MahasiswaController::class, 'edit']);
-Route::post('/mahasiswa/{id}/update', [MahasiswaController::class, 'update']);
-Route::delete('/mahasiswa/{id}', [MahasiswaController::class, 'destroy']);
+    Route::get('/mahasiswa/tambah', [MahasiswaController::class, 'create']);
+    Route::post('/mahasiswa/tambah', [MahasiswaController::class, 'store']);
+    Route::get('/mahasiswa/{id}/edit', [MahasiswaController::class, 'edit']);
+    Route::post('/mahasiswa/{id}/update', [MahasiswaController::class, 'update']);
+    Route::delete('/mahasiswa/{id}', [MahasiswaController::class, 'destroy']);
 
 
     Route::get('/hakakses', [App\Http\Controllers\HakaksesController::class, 'index'])->name('hakakses.index')->middleware('superadmin');
     Route::get('/hakakses/edit/{id}', [App\Http\Controllers\HakaksesController::class, 'edit'])->name('hakakses.edit')->middleware('superadmin');
     Route::put('/hakakses/update/{id}', [App\Http\Controllers\HakaksesController::class, 'update'])->name('hakakses.update')->middleware('superadmin');
     Route::delete('/hakakses/delete/{id}', [App\Http\Controllers\HakaksesController::class, 'destroy'])->name('hakakses.delete')->middleware('superadmin');
+
+    Route::get('/provinsi', [App\Http\Controllers\ProvinsiController::class, 'index'])->name('provinsi.index');
+    Route::get('/provinsi/create', [App\Http\Controllers\ProvinsiController::class, 'create'])->name('provinsi.create');
+    Route::post('/provinsi/store', [App\Http\Controllers\ProvinsiController::class, 'store'])->name('provinsi.store');
+    Route::get('/provinsi/edit/{id}', [App\Http\Controllers\ProvinsiController::class, 'edit'])->name('provinsi.edit');
+    Route::put('/provinsi/update/{id}', [App\Http\Controllers\ProvinsiController::class, 'update'])->name('provinsi.update');
+    Route::delete('/provinsi/delete/{id}', [App\Http\Controllers\ProvinsiController::class, 'destroy'])->name('provinsi.delete');
 
     Route::get('/prodi', [App\Http\Controllers\ProdiController::class, 'index'])->name('prodi.index');
     Route::get('/prodi/create', [App\Http\Controllers\ProdiController::class, 'create'])->name('prodi.create');
@@ -75,6 +87,7 @@ Route::delete('/mahasiswa/{id}', [MahasiswaController::class, 'destroy']);
     Route::get('/yudisium/edit/{id}', [App\Http\Controllers\YudisiumController::class, 'edit'])->name('yudisium.edit');
     Route::put('/yudisium/update/{id}', [App\Http\Controllers\YudisiumController::class, 'update'])->name('yudisium.update');
     Route::delete('/yudisium/delete/{id}', [App\Http\Controllers\YudisiumController::class, 'destroy'])->name('yudisium.delete');
+    Route::get('/verfikasi/{id}', [App\Http\Controllers\YudisiumController::class, 'verifikasi'])->name('verifikasi');
 
     Route::get('/detail', [App\Http\Controllers\DetailController::class, 'index'])->name('detail.index');
     Route::get('/detail/create', [App\Http\Controllers\DetailController::class, 'create'])->name('detail.create');

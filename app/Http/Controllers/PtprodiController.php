@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pt;
+use App\Models\Provinsi;
 use App\Models\Prodi;
 use App\Models\Ptprodi;
 use Illuminate\Http\Request;

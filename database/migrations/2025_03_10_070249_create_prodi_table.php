@@ -14,11 +14,10 @@ return new class extends Migration
     {
         Schema::create('prodi', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pt_id')->constrained('pt'); // Hubungan dengan perguruan tinggi
             $table->string('nama');
+            $table->string('keterangan');
             $table->timestamps();
         });
-        
     }
 
     /**

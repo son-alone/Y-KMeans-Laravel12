@@ -6,6 +6,7 @@ use App\Models\Batch;
 use App\Models\Pt;
 use App\Models\Yudisium;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class YudisiumController extends Controller
 {
@@ -30,7 +31,7 @@ class YudisiumController extends Controller
     {
         $data_batch = Batch::all();
         $data_pt = Pt::all();
-        return view('layouts.yudisium.create',compact('data_batch','data_pt'));
+        return view('layouts.yudisium.create', compact('data_batch', 'data_pt'));
     }
 
     /**
@@ -42,16 +43,14 @@ class YudisiumController extends Controller
             'id_batch' => 'required',
             'id_pt' => 'required',
             'tanggal_yudisium' => 'required',
-            'tanggal_verifikasi' => 'required',
-            'id_verifikator' => 'required',
+            'file' => 'required',
         ]);
 
         $yudisium = new Yudisium();
         $yudisium->id_batch = $request->id_batch;
         $yudisium->id_pt = $request->id_pt;
         $yudisium->tanggal_yudisium = $request->tanggal_yudisium;
-        $yudisium->tanggal_verifikasi = $request->tanggal_verifikasi;
-        $yudisium->id_verifikator = $request->id_verifikator;
+        $yudisium->file = $request->file;
         if ($yudisium->save()) {
             return redirect()->route('yudisium.index')->with('message', 'Data Yudisium Berhasil Dibuat.');
         } else {
@@ -78,7 +77,7 @@ class YudisiumController extends Controller
 
         $data_batch = Batch::all();
         $data_pt = Pt::all();
-        return view('layouts.yudisium.edit',compact('yudisium','data_batch','data_pt'));
+        return view('layouts.yudisium.edit', compact('yudisium', 'data_batch', 'data_pt'));
     }
 
     /**
@@ -96,15 +95,13 @@ class YudisiumController extends Controller
                 'id_batch' => 'required|string|max:255',
                 'id_pt' => 'required|string|max:255',
                 'tanggal_yudisium' => 'required|date',
-                'tanggal_verifikasi' => 'required|date',
-                'id_verifikator' => 'required|string|max:255',
+                'file' => 'required|file',
             ]);
 
             $yudisium->id_batch = $request->id_batch;
             $yudisium->id_pt = $request->id_pt;
             $yudisium->tanggal_yudisium = $request->tanggal_yudisium;
-            $yudisium->tanggal_verifikasi = $request->tanggal_verifikasi;
-            $yudisium->id_verifikator = $request->id_verifikator;
+            $yudisium->file = $request->file;
             $yudisium->save();
 
             return redirect()->route('yudisium.index')->with('message', 'Edit Data Berhasil');
@@ -113,6 +110,28 @@ class YudisiumController extends Controller
         }
     }
 
+    public function verifikasi($id)
+    {
+        // dd($id);
+        // Mencari data yudisium berdasarkan ID
+        $yudisium = Yudisium::find($id);
+
+        // Jika data tidak ditemukan, kembalikan dengan pesan error
+        if (!$yudisium) {
+            return redirect()->back()->with('error', 'Data Yudisium tidak ditemukan');
+        }
+
+        // Perbarui status verifikasi dan ID verifikator
+        $yudisium->tanggal_verifikasi = now();  // Anda bisa menggunakan waktu sekarang atau sesuai kebutuhan
+        $yudisium->id_verifikator = Auth::user()->id;  // Misalnya, menggunakan ID pengguna yang sedang login
+
+        // Simpan perubahan
+        if ($yudisium->save()) {
+            return redirect()->route('yudisium.index')->with('message', 'Verifikasi berhasil');
+        } else {
+            return redirect()->back()->with('error', 'Verifikasi gagal');
+        }
+    }
 
 
     /**
