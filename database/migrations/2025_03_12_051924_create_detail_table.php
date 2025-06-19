@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('id_yudisium');
             $table->string('id_pt');
             $table->string('id_prodi');
+            $table->string('jenjang');
             $table->string('id_batch');
             $table->string('npm');
             $table->string('nama_mhs');

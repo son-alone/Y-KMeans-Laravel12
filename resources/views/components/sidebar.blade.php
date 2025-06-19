@@ -2,22 +2,30 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-        <a href="">LLDIKTI2</a>
-        </div>
-        <div class="sidebar-brand sidebar-brand-sm">
-        <a href="">LLDIKTI2</a>
-        </div>
+        <a href=""><img src="{{ asset('images/icons/icon-512x512.png') }}" alt="Logo" width="65" height="65"></a>
+    </div>
+    <div class="sidebar-brand sidebar-brand-sm">
+        <a href=""><img src="{{ asset('images/icons/icon-512x512.png') }}" alt="Logo" width="65" height="65"></a>
+    </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class="{{ Request::is('home') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('home') }}"><i class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
-            @if (Auth::user()->role == 'superadmin')
+
+            @can('role-list')
             <li class="menu-header">Hak Akses</li>
+            
             <li class="{{ Request::is('hakakses') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('hakakses') }}"><i class="fas fa-user-shield"></i> <span>Hak Akses</span></a>
+                <a class="nav-link" href="{{ route("roles.index") }}"><i class="fas fa-user-shield"></i> <span>Roles</span></a>
             </li>
-            @endif
+            @endcan
+            @can('user-list')
+            <li class="{{ Request::is('hakakses') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route("users.index") }}"><i class="fas fa-user-shield"></i> <span>Pengguna</span></a>
+            </li>
+            @endcan
+
             <!-- profile ganti password -->
             <li class="menu-header">Profile</li>
             <li class="{{ Request::is('profile/edit') ? 'active' : '' }}">
@@ -28,28 +36,55 @@
             </li>
             <li class="menu-header">Data Kit</li>
 
+            @can('provinsi-list')
             <li class="{{ Request::is('provinsi') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('provinsi') }}"><i class="fas fa-university"></i> <span> Data Provinsi </span></a>
             </li>
+            @endcan
 
+            @can('prodi-list')
             <li class="{{ Request::is('prodi') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('prodi') }}"><i class="fas fa-university"></i> <span> Data Prodi </span></a>
             </li>
+            @endcan
+
+            @can('pt-list')
             <li class="{{ Request::is('pt') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('pt') }}"><i class="fas fa-university"></i> <span> Data Perguruan Tinggi </span></a>
             </li>
+            @endcan
+
+            @can('ptprodi-list')
             <li class="{{ Request::is('ptprodi') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('ptprodi') }}"><i class="fas fa-university"></i> <span> Data Prodi Perguruan Tinggi </span></a>
             </li>
+            @endcan
+
+            @can('batch-list')
             <li class="{{ Request::is('batch') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('batch') }}"><i class="fas fa-university"></i> <span> Data Batch </span></a>
             </li>
+            @endcan
+
+            @can('yudisium-list')
             <li class="{{ Request::is('yudisium') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('yudisium') }}"><i class="fas fa-university"></i> <span> Data Yudisium </span></a>
             </li>
+            @endcan
+
+            @can('detail-list')
             <li class="{{ Request::is('detail') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('detail') }}"><i class="fas fa-university"></i> <span> Data Detail Yudisium </span></a>
             </li>
+            @endcan
+
+            @can('clustering-list')
+            <li class="{{ Request::is('clustering') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('clustering') }}"><i class="fas fa-university"></i> <span> Clustering Mahasiswa </span></a>
+            </li>
+            @endcan
+
+            
             <li class="menu-header">Examples</li>
             <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('blank-page') }}"><i class="far fa-square"></i> <span>Blank Page</span></a>

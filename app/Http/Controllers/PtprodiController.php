@@ -17,7 +17,7 @@ class PtprodiController extends Controller
     {
         $search = $request->get('search');
         if ($search) {
-            $data['ptprodi'] = Ptprodi::where('id', 'like', "%{$search}%")->get();
+            $data['ptprodi'] = Ptprodi::where('sk', 'like', "%{$search}%")->get();
         } else {
             $data['ptprodi'] = Ptprodi::all();
         }

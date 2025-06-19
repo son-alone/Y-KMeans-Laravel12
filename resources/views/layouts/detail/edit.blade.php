@@ -44,6 +44,18 @@
             </div>
 
             <div class="form-group">
+                <label for="jenjang">Jenjang</label>
+                <select type="text" name="jenjang" id="jenjang" class="form-control" value="{{ $detail->jenjang }}" maxlength="255" required>
+                    <option value="D3" <?php if ($detail->jenjang == "D3") echo "selected"; ?>>D3</option>
+                    <option value="D4" <?php if ($detail->jenjang == "D4") echo "selected"; ?>>D4</option>
+                    <option value="S1" <?php if ($detail->jenjang == "S1") echo "selected"; ?>>S1</option>
+                    <option value="S2" <?php if ($detail->jenjang == "S2") echo "selected"; ?>>S2</option>
+                    <option value="Profesi" <?php if ($detail->jenjang == "Profesi") echo "selected"; ?>>Profesi</option>
+                    <option value="S3" <?php if ($detail->jenjang == "S3") echo "selected"; ?>>S3</option>
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label for="id_batch">ID Batch</label>
                 <select name="id_batch" id="id_batch">
                     @foreach ($data_batch as $batch)

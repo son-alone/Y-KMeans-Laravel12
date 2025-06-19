@@ -34,7 +34,10 @@
 
                     <div class="form-group">
                         <label for="keterangan">Keterangan</label>
-                        <input type="text" name="keterangan" id="keterangan" class="form-control">
+                        <select type="text" name="keterangan" id="keterangan" class="form-control">
+                        <option value="Aktif">Aktif</option>
+                        <option value="Tidak Aktif">Tidak Aktif</option>
+                    </select>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>

@@ -28,10 +28,12 @@
                 <div class="table-responsive">
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <a href="{{ route('batch.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
+                        @can('batch-create')
+                        <a href="{{ route('batch.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
+                        @endcan
                             <form action="{{ route('batch.index') }}" method="GET">
                                 <div class="input-group">
-                                    <input type="text" name="search" class="form-control" placeholder="Cari Berdasarkan Kode Pt...">
+                                    <input type="text" name="search" class="form-control" placeholder="Cari Berdasarkan Batch">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" style="margin-left:5px;" type="submit">Search</button>
                                     </div>
@@ -55,12 +57,16 @@
                                     <td>{{ $item->range_awal }}</td>  
                                     <td>{{ $item->range_akhir }}</td>            
                                     <td>
-                                        <a href="{{ route('batch.edit', $item->id) }}" class="btn btn-primary">Edit</a>
-                                        <form action="{{ route('batch.delete', $item->id) }}" method="POST" style="display: inline-block;">
+                                    @can('batch-edit')
+                                    <a href="{{ route('batch.edit', $item->id) }}" class="btn btn-primary">Edit</a>
+                                    @endcan
+                                    @can('batch-delete')
+                                    <form action="{{ route('batch.delete', $item->id) }}" method="POST" style="display: inline-block;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
+                                    @endcan
                                     </td> <!-- Add Edit and Delete buttons for each row -->
                                 </tr>
                             @endforeach

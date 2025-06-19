@@ -7,6 +7,9 @@ use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ClusteringController;
 use App\Http\Controllers\DetailController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,6 +19,7 @@ Route::resource('prodi', ProdiController::class);
 
 Auth::routes();
 
+//Route::group(['middleware' => ['auth']], function() {
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -23,16 +27,21 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/change-password', [ProfileController::class, 'changepassword'])->name('profile.change-password');
     Route::put('/profile/password', [ProfileController::class, 'password'])->name('profile.password');
     Route::get('/blank-page', [App\Http\Controllers\HomeController::class, 'blank'])->name('blank');
+    Route::post('/algoritma', [App\Http\Controllers\ClusteringController::class, 'mulai'])->name('algoritma');
+    Route::get('/clustering', [App\Http\Controllers\ClusteringController::class, 'cluster'])->name('clustering');
 
-// routes/web.php
-Route::post('/import', [DetailController::class, 'import'])->name('importExcel');
+
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+
+    Route::get('/hakakses', [App\Http\Controllers\HakaksesController::class, 'index'])->name('hakakses.index')->middleware('batch');
+    Route::get('/hakakses/edit/{id}', [App\Http\Controllers\HakaksesController::class, 'edit'])->name('hakakses.edit')->middleware('batch');
+    Route::put('/hakakses/update/{id}', [App\Http\Controllers\HakaksesController::class, 'update'])->name('hakakses.update')->middleware('batch');
+    Route::delete('/hakakses/delete/{id}', [App\Http\Controllers\HakaksesController::class, 'destroy'])->name('hakakses.delete')->middleware('batch');
 
 
-    // Routing untuk menampilkan daftar provinsi
-    Route::get('/clustering', [ClusteringController::class, 'index'])->name('clustering.index');
-
-    // Routing untuk menampilkan hasil clustering berdasarkan provinsi yang dipilih
-    Route::get('/clustering/{provinsi_id}', [ClusteringController::class, 'clusterMahasiswa'])->name('clustering.cluster');
+    // routes/web.php
+    Route::post('/import', [DetailController::class, 'import'])->name('importExcel');
 
     Route::get('/mahasiswa/tambah', [MahasiswaController::class, 'create']);
     Route::post('/mahasiswa/tambah', [MahasiswaController::class, 'store']);
@@ -45,6 +54,7 @@ Route::post('/import', [DetailController::class, 'import'])->name('importExcel')
     Route::get('/hakakses/edit/{id}', [App\Http\Controllers\HakaksesController::class, 'edit'])->name('hakakses.edit')->middleware('superadmin');
     Route::put('/hakakses/update/{id}', [App\Http\Controllers\HakaksesController::class, 'update'])->name('hakakses.update')->middleware('superadmin');
     Route::delete('/hakakses/delete/{id}', [App\Http\Controllers\HakaksesController::class, 'destroy'])->name('hakakses.delete')->middleware('superadmin');
+
 
     Route::get('/provinsi', [App\Http\Controllers\ProvinsiController::class, 'index'])->name('provinsi.index');
     Route::get('/provinsi/create', [App\Http\Controllers\ProvinsiController::class, 'create'])->name('provinsi.create');

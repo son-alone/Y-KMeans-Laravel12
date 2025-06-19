@@ -71,9 +71,11 @@ class HakaksesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Hakakses $hakakses)
+    public function destroy($id)
     {
         //
+        $hakakses = hakakses::find($id);
         $hakakses->delete();
+        return redirect()->route('hakakses.index');
     }
 }

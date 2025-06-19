@@ -17,7 +17,7 @@ class YudisiumController extends Controller
     {
         $search = $request->get('search');
         if ($search) {
-            $data['yudisium'] = Yudisium::where('id', 'like', "%{$search}%")->get();
+            $data['yudisium'] = Yudisium::where('tanggal_yudisium', 'like', "%{$search}%")->get();
         } else {
             $data['yudisium'] = Yudisium::all();
         }
@@ -39,25 +39,40 @@ class YudisiumController extends Controller
      */
     public function store(Request $request)
     {
+        // Validasi input
         $validatedData = $request->validate([
             'id_batch' => 'required',
             'id_pt' => 'required',
             'tanggal_yudisium' => 'required',
-            'file' => 'required',
+            'file' => 'required|file|mimes:pdf|max:10240', // Pastikan file yang diunggah sesuai format
         ]);
 
-        $yudisium = new Yudisium();
-        $yudisium->id_batch = $request->id_batch;
-        $yudisium->id_pt = $request->id_pt;
-        $yudisium->tanggal_yudisium = $request->tanggal_yudisium;
-        $yudisium->file = $request->file;
-        if ($yudisium->save()) {
-            return redirect()->route('yudisium.index')->with('message', 'Data Yudisium Berhasil Dibuat.');
-        } else {
-            return redirect()->back()->with('error', 'Gagal Menambah Data Yudisium.');
+        // Proses penyimpanan file
+        if ($request->hasFile('file') && $request->file('file')->isValid()) {
+            // Menyimpan file di folder 'public/upload' dan mendapatkan nama file yang telah diunggah
+            $file = $request->file('file');
+            $fileName = time() . '.' . $file->getClientOriginalExtension(); // Menambahkan timestamp agar nama unik
+            $filePath = $file->storeAs('upload', $fileName, 'public'); // Menyimpan di folder public/upload
+
+            // Membuat objek Yudisium baru dan mengisi data
+            $yudisium = new Yudisium();
+            $yudisium->id_batch = $request->id_batch;
+            $yudisium->id_pt = $request->id_pt;
+            $yudisium->tanggal_yudisium = $request->tanggal_yudisium;
+            $yudisium->file = $filePath; // Menyimpan path file ke dalam database
+
+            // Menyimpan data Yudisium ke database
+            if ($yudisium->save()) {
+                return redirect()->route('yudisium.index')->with('message', 'Data Yudisium Berhasil Dibuat.');
+            } else {
+                return redirect()->back()->with('error', 'Gagal Menambah Data Yudisium.');
+            }
         }
-        return redirect()->route('yudisium.index');
+
+        // Jika file tidak valid atau tidak ada file yang diunggah
+        return redirect()->back()->with('error', 'File tidak valid.');
     }
+
 
     /**
      * Display the specified resource.
@@ -95,14 +110,30 @@ class YudisiumController extends Controller
                 'id_batch' => 'required|string|max:255',
                 'id_pt' => 'required|string|max:255',
                 'tanggal_yudisium' => 'required|date',
-                'file' => 'required|file',
+                'file' => 'file|mimes:pdf|max:10240', // Pastikan file yang diunggah sesuai format
             ]);
 
-            $yudisium->id_batch = $request->id_batch;
-            $yudisium->id_pt = $request->id_pt;
-            $yudisium->tanggal_yudisium = $request->tanggal_yudisium;
-            $yudisium->file = $request->file;
-            $yudisium->save();
+            if ($request->hasFile('file') && $request->file('file')->isValid()) {
+                // Menyimpan file di folder 'public/upload' dan mendapatkan nama file yang telah diunggah
+                $file = $request->file('file');
+                $fileName = time() . '.' . $file->getClientOriginalExtension(); // Menambahkan timestamp agar nama unik
+                $filePath = $file->storeAs('upload', $fileName, 'public'); // Menyimpan di folder public/upload
+
+
+                $yudisium->id_batch = $request->id_batch;
+                $yudisium->id_pt = $request->id_pt;
+                $yudisium->tanggal_yudisium = $request->tanggal_yudisium;
+                $yudisium->file = $filePath;
+                $yudisium->save();
+            } else {
+
+                $yudisium->id_batch = $request->id_batch;
+                $yudisium->id_pt = $request->id_pt;
+                $yudisium->tanggal_yudisium = $request->tanggal_yudisium;
+                $yudisium->save();
+            }
+
+
 
             return redirect()->route('yudisium.index')->with('message', 'Edit Data Berhasil');
         } catch (\Exception $e) {

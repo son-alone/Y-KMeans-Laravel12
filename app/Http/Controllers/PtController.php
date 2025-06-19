@@ -15,7 +15,7 @@ class PtController extends Controller
     {
         $search = $request->get('search');
         if ($search) {
-            $data['pt'] = Pt::where('id', 'like', "%{$search}%")->get();
+            $data['pt'] = Pt::where('nama_pt', 'like', "%{$search}%")->get();
         } else {
             $data['pt'] = Pt::all();
         }

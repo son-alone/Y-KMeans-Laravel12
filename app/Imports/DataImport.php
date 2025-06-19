@@ -24,33 +24,60 @@ class DataImport implements ToModel, WithHeadingRow
      * @param array $row
      * @return \Illuminate\Database\Eloquent\Model|null
      */
-    public function model(array $row)
-    {
+public function model(array $row)
+{
+    if ($row) {
         $yudisium = Yudisium::find($this->yudisium_id);
-        $prodi = Prodi::where('nama', '=', $row['prodi'])->first();
-        // dd($row);
+        if (!$yudisium) {
+            // Jika yudisium tidak ditemukan, hentikan proses
+            return null;
+        }
 
-        $formattedDate = Carbon::createFromFormat('d/m/Y', $row['tgl_masuk'])->format('Y-m-d');
+        $prodi = Prodi::where('nama', '=', $row['prodi'] ?? '')->first();
+        if (!$prodi) {
+            // Jika prodi tidak ditemukan, hentikan proses
+            return null;
+        }
 
-        $ipk = floatval($row['ipk']);
+        // Proteksi format tanggal masuk
+        try {
+            $tgl_masuk = isset($row['tgl_masuk']) && !empty($row['tgl_masuk']) 
+                ? Carbon::createFromFormat('d/m/Y', $row['tgl_masuk'])->format('Y-m-d') 
+                : null;
+        } catch (\Exception $e) {
+            $tgl_masuk = null; // atau bisa lempar error sesuai kebutuhan
+        }
+
+        // Proteksi format tanggal lulus
+        try {
+            $tgl_lulus = isset($row['tgl_lulus']) && !empty($row['tgl_lulus']) 
+                ? Carbon::createFromFormat('d/m/Y', $row['tgl_lulus'])->format('Y-m-d') 
+                : null;
+        } catch (\Exception $e) {
+            $tgl_lulus = null;
+        }
+
+        $ipk = isset($row['ipk']) ? floatval($row['ipk']) : 0;
         if ($ipk <= 0 || $ipk > 4) {
-            // Pastikan IPK berada dalam rentang yang valid, misal antara 0 dan 4
             throw new \Exception('Nilai IPK harus dalam rentang 0 - 4.');
         }
 
-        // Assuming the Excel file has columns like NPM, Nama Mahasiswa, IPK, JML SKS, etc.
         return new Detail([
             'id_yudisium' => $this->yudisium_id,
             'id_pt' => $yudisium->id_pt,
             'id_batch' => $yudisium->id_batch,
+            'jenjang' => $row['jenjang'] ?? null,
             'id_prodi' => $prodi->id,
-            'npm' => $row['npm'],  // Assuming column 0 contains the NPM
-            'nama_mhs' => $row['nama_mhs'],  // Assuming column 1 contains the Name
-            'ipk' => $ipk,  // Assuming column 2 contains the IPK
-            'jml_sks' => $row['jml_sks'],  // Assuming column 3 contains the SKS count
-            'tgl_masuk' => $formattedDate,
-            'tgl_lulus' => $formattedDate,
-            'jk' => $row['jk'],
+            'npm' => $row['npm'] ?? null,
+            'nama_mhs' => $row['nama_mhs'] ?? null,
+            'ipk' => $ipk,
+            'jml_sks' => $row['jml_sks'] ?? null,
+            'tgl_masuk' => $tgl_masuk,
+            'tgl_lulus' => $tgl_lulus,
+            'jk' => $row['jk'] ?? null,
         ]);
     }
+    return null;
+}
+
 }

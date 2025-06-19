@@ -28,10 +28,12 @@
                 <div class="table-responsive">
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <a href="{{ route('pt.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
-                            <form action="{{ route('pt.index') }}" method="GET">
+                            @can('pt-create')
+                        <a href="{{ route('pt.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
+                            @endcan
+                        <form action="{{ route('pt.index') }}" method="GET">
                                 <div class="input-group">
-                                    <input type="text" name="search" class="form-control" placeholder="Cari Berdasarkan Kode Pt...">
+                                    <input type="text" name="search" class="form-control" placeholder="Cari Berdasarkan Nama Perguruan Tinggi">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" style="margin-left:5px;" type="submit">Search</button>
                                     </div>
@@ -42,9 +44,9 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>ID Provinsi</th>
-                                <th>Nama PT</th>
-                                <th>No Hp</th>
+                                <th>Provinsi</th>
+                                <th>Nama Perguruan Tinggi</th>
+                                <th>Nomor Telepon</th>
                                 <th>Email</th>
                                 <th>Alamat</th>
                                 <th>Logo</th>
@@ -61,12 +63,17 @@
                                     <td>{{ $item->alamat }}</td>
                                     <td>{{ $item->logo }}</td>             
                                     <td>
-                                        <a href="{{ route('pt.edit', $item->id) }}" class="btn btn-primary">Edit</a>
-                                        <form action="{{ route('pt.delete', $item->id) }}" method="POST" style="display: inline-block;">
+                                        @can('pt-edit')
+                                    <a href="{{ route('pt.edit', $item->id) }}" class="btn btn-primary">Edit</a>
+                                        @endcan
+
+                                        @can('pt-delete')
+                                    <form action="{{ route('pt.delete', $item->id) }}" method="POST" style="display: inline-block;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
+                                        @endcan
                                     </td> <!-- Add Edit and Delete buttons for each row -->
                                 </tr>
                             @endforeach

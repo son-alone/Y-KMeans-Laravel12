@@ -33,10 +33,17 @@
                     @endforeach
                 </select>
             </div>
-            
+
             <div class="form-group">
                 <label for="jenjang">Jenjang</label>
-                <input type="text" name="jenjang" id="jenjang" class="form-control" value="{{ $ptprodi->jenjang }}" maxlength="255" required>
+                <select type="text" name="jenjang" id="jenjang" class="form-control" value="{{ $ptprodi->jenjang }}" maxlength="255" required>
+                    <option value="D3" <?php if ($ptprodi->jenjang == "D3") echo "selected"; ?>>D3</option>
+                    <option value="D4" <?php if ($ptprodi->jenjang == "D4") echo "selected"; ?>>D4</option>
+                    <option value="S1" <?php if ($ptprodi->jenjang == "S1") echo "selected"; ?>>S1</option>
+                    <option value="S2" <?php if ($ptprodi->jenjang == "S2") echo "selected"; ?>>S2</option>
+                    <option value="Profesi" <?php if ($ptprodi->jenjang == "Profesi") echo "selected"; ?>>Profesi</option>
+                    <option value="S3" <?php if ($ptprodi->jenjang == "S3") echo "selected"; ?>>S3</option>
+                </select>
             </div>
 
             <div class="form-group">

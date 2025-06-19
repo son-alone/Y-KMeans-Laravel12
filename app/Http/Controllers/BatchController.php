@@ -14,7 +14,7 @@ class BatchController extends Controller
     {
         $search = $request->get('search');
         if ($search) {
-            $data['batch'] = Batch::where('id', 'like', "%{$search}%")->get();
+            $data['batch'] = Batch::where('nama', 'like', "%{$search}%")->get();
         } else {
             $data['batch'] = Batch::all();
         }

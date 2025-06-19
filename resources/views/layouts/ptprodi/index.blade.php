@@ -31,7 +31,7 @@
                         <a href="{{ route('ptprodi.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
                         <form action="{{ route('ptprodi.index') }}" method="GET">
                             <div class="input-group">
-                                <input type="text" name="search" class="form-control" placeholder="Cari Berdasarkan Kode Pt...">
+                                <input type="text" name="search" class="form-control" placeholder="Cari Berdasarkan SK">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" style="margin-left:5px;" type="submit">Search</button>
                                 </div>
@@ -65,12 +65,17 @@
                             <td>{{ $item->jumlah_dosen }}</td>
                             <td>{{ $item->jumlah_mahasiswa }}</td>
                             <td>
-                                <a href="{{ route('ptprodi.edit', $item->id) }}" class="btn btn-primary">Edit</a>
-                                <form action="{{ route('ptprodi.delete', $item->id) }}" method="POST" style="display: inline-block;">
+                                @can('ptprodi-edit')
+                            <a href="{{ route('ptprodi.edit', $item->id) }}" class="btn btn-primary">Edit</a>
+                                @endcan
+
+                                @can('ptprodi-delete')
+                            <form action="{{ route('ptprodi.delete', $item->id) }}" method="POST" style="display: inline-block;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
+                                @endcan
                             </td> <!-- Add Edit and Delete buttons for each row -->
                         </tr>
                         @endforeach

@@ -14,7 +14,7 @@ class ProvinsiController extends Controller
     {
         $search = $request->get('search');
         if ($search) {
-            $data['provinsi'] = Provinsi::where('id', 'like', "%{$search}%")->get();
+            $data['provinsi'] = Provinsi::where('nama_provinsi', 'like', "%{$search}%")->get();
         } else {
             $data['provinsi'] = Provinsi::all();
         }

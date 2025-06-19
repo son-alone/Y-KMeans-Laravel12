@@ -87,6 +87,7 @@ class DetailController extends Controller
             'id_yudisium' => 'required',
             'id_pt' => 'required',
             'id_prodi' => 'required',
+            'jenjang' => 'required',
             'id_batch' => 'required',
             'npm' => 'required',
             'nama_mhs' => 'required',
@@ -101,6 +102,7 @@ class DetailController extends Controller
         $detail->id_yudisium = $request->id_yudisium;
         $detail->id_pt = $request->id_pt;
         $detail->id_prodi = $request->id_prodi;
+        $detail->jenjang = $request->jenjang;
         $detail->id_batch = $request->id_batch;
         $detail->npm = $request->npm;
         $detail->nama_mhs = $request->nama_mhs;
@@ -158,6 +160,7 @@ class DetailController extends Controller
                 'id_yudisium' => 'required|string|max:255',
                 'id_pt' => 'required|string|max:255',
                 'id_prodi' => 'required|string|max:255',
+                'jenjang' => 'required|string|max:255',
                 'id_batch' => 'required|string|max:255',
                 'npm' => 'required|string|max:255',
                 'nama_mhs' => 'required|string|max:255',
@@ -173,6 +176,7 @@ class DetailController extends Controller
             $detail->id_yudisium = $request->id_yudisium;
             $detail->id_pt = $request->id_pt;
             $detail->id_prodi = $request->id_prodi;
+            $detail->jenjang = $request->jenjang;
             $detail->id_batch = $request->id_batch;
             $detail->npm = $request->npm;
             $detail->nama_mhs = $request->nama_mhs;

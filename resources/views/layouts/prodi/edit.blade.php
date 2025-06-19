@@ -23,7 +23,10 @@
 
                 <div class="form-group">
                     <label for="keterangan">Keterangan</label>
-                    <input type="text" name="keterangan" id="keterangan" class="form-control" value="{{ $prodi->keterangan }}" maxlength="255" required>
+                    <select type="text" name="keterangan" id="keterangan" class="form-control" value="{{ $prodi->keterangan }}" maxlength="255" required>
+                    <option value="Aktif" <?php if ($prodi->keteerangan == "Aktif") echo "selected"; ?>>Aktif</option>
+                    <option value="Tidak Aktif" <?php if ($prodi->keterangan == "Tidak Aktif") echo "selected"; ?>>Tidak Aktif</option>
+                </select>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Update</button>

@@ -25,7 +25,7 @@
             @endif
 
             <div class="section-body">
-            <form action="{{ route('yudisium.store') }}" method="POST">
+            <form action="{{ route('yudisium.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="id_batch">id_batch</label>

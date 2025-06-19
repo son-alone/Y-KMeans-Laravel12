@@ -14,7 +14,7 @@ class ProdiController extends Controller
     {
         $search = $request->get('search');
         if ($search) {
-            $data['prodi'] = Prodi::where('id', 'like', "%{$search}%")
+            $data['prodi'] = Prodi::where('nama', 'like', "%{$search}%")
                 ->orderBy('nama', 'asc')  // Menambahkan pengurutan berdasarkan nama abjad
                 ->get();
         } else {

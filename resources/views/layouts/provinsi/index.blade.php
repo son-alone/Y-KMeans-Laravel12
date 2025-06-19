@@ -3,75 +3,82 @@
 @section('title', 'Provinsi')
 
 @push('style')
-    <!-- CSS Libraries -->
+<!-- CSS Libraries -->
 @endpush
 
 @section('content')
-    <div class="main-content">
-        <section class="section">
-            <div class="section-header">
-                <h1>Provinsi</h1>
-            </div>
-            
-            @if (session('message'))
-                <div class="alert alert-success">
-                    {{ session('message') }}
-                </div>
-            @endif
-            @if (session('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
-            @endif
+<div class="main-content">
+    <section class="section">
+        <div class="section-header">
+            <h1>Provinsi</h1>
+        </div>
 
-            <div class="section-body">
-                <div class="table-responsive">
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <a href="{{ route('provinsi.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
-                            <form action="{{ route('provinsi.index') }}" method="GET">
-                                <div class="input-group">
-                                    <input type="text" name="search" class="form-control" placeholder="Cari Berdasarkan Kode Pt...">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" style="margin-left:5px;" type="submit">Search</button>
-                                    </div>
+        @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+        @endif
+        @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @endif
+
+        <div class="section-body">
+            <div class="table-responsive">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                    @can('provinsi-create')
+                    <a href="{{ route('provinsi.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
+                    @endcan
+                        <form action="{{ route('provinsi.index') }}" method="GET">
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control" placeholder="Cari Berdasarkan Nama Provinsi">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" style="margin-left:5px;" type="submit">Search</button>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Nama Provinsi</th>
-                                <th>Logo</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($provinsi as $item)
-                                <tr>
-                                    <td>{{ $item->nama_provinsi }}</td>
-                                    <td>{{ $item->logo }}</td>             
-                                    <td>
-                                        <a href="{{ route('provinsi.edit', $item->id) }}" class="btn btn-primary">Edit</a>
-                                        <form action="{{ route('provinsi.delete', $item->id) }}" method="POST" style="display: inline-block;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td> <!-- Add Edit and Delete buttons for each row -->
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
                 </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nama Provinsi</th>
+                            <th>Logo</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($provinsi as $item)
+                        <tr>
+                            <td>{{ $item->nama_provinsi }}</td>
+                            <td>{{ $item->logo }}</td>
+                            <td>
+                                @can('provinsi-edit')
+                                <a href="{{ route('provinsi.edit', $item->id) }}" class="btn btn-primary">Edit</a>
+                                @endcan
+
+                                @can('provinsi-delete')
+                                <form action="{{ route('provinsi.delete', $item->id) }}" method="POST" style="display: inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                                @endcan
+                            </td> <!-- Add Edit and Delete buttons for each row -->
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+</div>
 @endsection
 
 @push('scripts')
-    <!-- JS Libraries -->
+<!-- JS Libraries -->
 
-    <!-- Page Specific JS File -->
+<!-- Page Specific JS File -->
 @endpush

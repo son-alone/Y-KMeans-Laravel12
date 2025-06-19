@@ -41,7 +41,7 @@
 
                     <div class="form-group">
                     <label for="file">Upload File</label>
-                    <input type="file" name="file" id="file" class="form-control" value="{{ $yudisium->file }}" required>
+                    <input type="file" name="file" id="file" class="form-control" value="{{ $yudisium->file }}">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Update</button>

@@ -28,4 +28,9 @@ class Yudisium extends Model
     {
         return $this->hasOne(Pt::class, 'id', 'id_pt');
     }
+
+    public function Verifikator()
+    {
+        return $this->hasOne(User::class, 'id', 'id_verifikator');
+    }
 }

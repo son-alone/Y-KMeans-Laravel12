@@ -28,7 +28,9 @@
             <div class="table-responsive">
                 <div class="row mb-3">
                     <div class="col-md-12">
+                        @can('detail-create')
                         <a href="{{ route('detail.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
+                        @endcan
                         <!-- Trigger the modal -->
                         <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#uploadModal">Import Data</button>
                         <form action="{{ route('detail.index') }}" method="GET">
@@ -76,7 +78,7 @@
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6 text-right">
-                                    <input type="text" name="search" class="form-control" placeholder="Cari mahasiswa">
+                                    <input type="text" name="search" class="form-control" placeholder="Cari NPM atau Nama Mahasiswa">
                                 </div>
                                 <div class="col-md-6 text-left">
                                     <button class="btn btn-primary" type="submit">Filter</button>
@@ -91,6 +93,7 @@
                             <th>ID Provinsi</th>
                             <th>ID Pt</th>
                             <th>ID Prodi</th>
+                            <th>Jenjang</th>
                             <th>ID Batch</th>
                             <th>NPM</th>
                             <th>Nama Mahasiswa</th>
@@ -108,7 +111,8 @@
                             <td>{{ $item->pt?->provinsi?->nama_provinsi }}</td>
                             <td>{{ $item->pt?->nama_pt }}</td>
                             <td>{{ $item->prodi?->nama }}</td>
-                            <td>{{ $item->yudisium?->batch?->nama }}</td>
+                            <td>{{ $item->jenjang }}</td>
+                            <td>{{ $item->batch?->nama }}</td>
                             <td>{{ $item->npm }}</td>
                             <td>{{ $item->nama_mhs }}</td>
                             <td>{{ $item->ipk }}</td>
@@ -117,12 +121,17 @@
                             <td>{{ $item->tgl_lulus }}</td>
                             <td>{{ $item->jk }}</td>
                             <td>
-                                <a href="{{ route('detail.edit', $item->id) }}" class="btn btn-primary">Edit</a>
-                                <form action="{{ route('detail.delete', $item->id) }}" method="POST" style="display: inline-block;">
+                                @can('detail-edit')
+                            <a href="{{ route('detail.edit', $item->id) }}" class="btn btn-primary">Edit</a>
+                                @endcan
+                                
+                                @can('detail-delete')
+                            <form action="{{ route('detail.delete', $item->id) }}" method="POST" style="display: inline-block;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
+                                @endcan
                             </td>
                         </tr>
                         @endforeach

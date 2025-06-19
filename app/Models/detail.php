@@ -17,6 +17,7 @@ class Detail extends Model
         'id_yudisium',
         'id_pt',
         'id_prodi',
+        'jenjang',
         'id_batch',
         'npm',
         'nama_mhs',
