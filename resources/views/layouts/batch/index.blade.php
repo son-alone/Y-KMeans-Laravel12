@@ -44,7 +44,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Nama</th>
+                                <th>Batch</th>
                                 <th>Range Awal</th>
                                 <th>Range Akhir</th>
                                 <th>Action</th>

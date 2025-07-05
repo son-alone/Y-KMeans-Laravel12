@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
 
     // routes/web.php
     Route::post('/import', [DetailController::class, 'import'])->name('importExcel');
+    Route::get('/template', [App\Http\Controllers\DetailController::class, 'template'])->name('detail.template');
 
     Route::get('/mahasiswa/tambah', [MahasiswaController::class, 'create']);
     Route::post('/mahasiswa/tambah', [MahasiswaController::class, 'store']);

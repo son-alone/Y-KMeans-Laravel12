@@ -28,8 +28,8 @@
             <form action="{{ route('yudisium.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="id_batch">id_batch</label>
-                    <select name="id_batch" id="id_batch">
+                        <label for="id_batch">Batch</label>
+                    <select name="id_batch" id="id_batch" class="form-control">
                         @foreach ($data_batch as $batch)
                         <option value="{{ $batch->id }}">{{ $batch->nama }}</option>
                         @endforeach
@@ -37,8 +37,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="id_pt">id_pt</label>
-                    <select name="id_pt" id="id_pt">
+                        <label for="id_pt">Perguruan Tinggi</label>
+                    <select name="id_pt" id="id_pt" class="form-control">
                         @foreach ($data_pt as $pt)
                         <option value="{{ $pt->id }}">{{ $pt->nama_pt }}</option>
                         @endforeach
@@ -46,7 +46,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="tanggal_yudisium">tanggal_yudisium</label>
+                        <label for="tanggal_yudisium">Tanggal Yudisium</label>
                         <input type="date" name="tanggal_yudisium" id="tanggal_yudisium" class="form-control">
                     </div>
 

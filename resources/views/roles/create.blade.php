@@ -8,11 +8,6 @@
             <div class="pull-left">
                 <h2>Create New Role</h2>
             </div>
-            <div class="pull-right">
-                
-                <a class="btn btn-success btn-sm mb-2" href="{{ route('roles.create') }}"><i class="fa fa-plus"></i> Create New Role</a>
-                
-            </div>
         </div>
     </div>
 

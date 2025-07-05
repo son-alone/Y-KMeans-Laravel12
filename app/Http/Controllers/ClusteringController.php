@@ -141,7 +141,7 @@ class ClusteringController extends Controller
         // dd($result['centroids']);
 
         // Kirim hasil ke view
-        return view('layouts.clustering_result', [
+        return view('layouts.cluster.clustering_result', [
             'centroids' => $result['centroids'],
             'clusters' => $result['clusters']
         ]);
@@ -221,7 +221,7 @@ class ClusteringController extends Controller
         $data_prodi = Prodi::all();
         $data_yudisium = Yudisium::all();
         $data_batch = Batch::all();
-        return view('layouts.clustering', compact('data_pt', 'data_prodi', 'data_yudisium', 'data_batch'));
+        return view('layouts.cluster.clustering', compact('data_pt', 'data_prodi', 'data_yudisium', 'data_batch'));
     }
 
 

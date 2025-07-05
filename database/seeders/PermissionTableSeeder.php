@@ -48,6 +48,7 @@ class PermissionTableSeeder extends Seeder
             'yudisium-edit',
             'yudisium-delete',
             'detail-list',
+            'detail-import',
             'detail-create',
             'detail-edit',
             'detail-delete',

@@ -18,7 +18,7 @@ class Pt extends Model
         'no_hp',
         'email',
         'alamat',
-        'logo',
+        'akreditasi',
     ];
     public function Provinsi()
     {

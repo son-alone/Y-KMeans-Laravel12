@@ -7,9 +7,6 @@
         <div class="pull-left">
             <h2>Edit User</h2>
         </div>
-        <div class="pull-right">
-            <a class="btn btn-primary btn-sm mb-2" href="{{ route('users.index') }}"><i class="fa fa-arrow-left"></i> Back</a>
-        </div>
     </div>
 </div>
 
@@ -43,13 +40,13 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Password:</strong>
+                <strong>Ganti Password</strong>
                 <input type="password" name="password" placeholder="Password" class="form-control">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Confirm Password:</strong>
+                <strong>Konfirmasi Ganti Password:</strong>
                 <input type="password" name="confirm-password" placeholder="Confirm Password" class="form-control">
             </div>
         </div>

@@ -17,8 +17,8 @@
                 @method('PUT')
 
             <div class="form-group">
-                <label for="id_batch">Id Batch</label>
-                <select name="id_batch" id="id_batch">
+                <label for="id_batch">Batch</label>
+                <select name="id_batch" id="id_batch" class="form-control">
                     @foreach ($data_batch as $batch)
                     <option value="{{ $batch->id }}" <?php if ($batch->id == $yudisium->id_batch) echo "selected"; ?>>{{ $batch->nama }}</option>
                     @endforeach
@@ -26,8 +26,8 @@
             </div>
 
             <div class="form-group">
-                <label for="id_pt">ID PT</label>
-                <select name="id_pt" id="id_pt">
+                <label for="id_pt">Perguruan Tinggi</label>
+                <select name="id_pt" id="id_pt" class="form-control">
                     @foreach ($data_pt as $pt)
                     <option value="{{ $pt->id }}" <?php if ($pt->id == $yudisium->id_pt) echo "selected"; ?>>{{ $pt->nama_pt }}</option>
                     @endforeach
@@ -35,7 +35,7 @@
             </div>
 
                     <div class="form-group">
-                        <label for="tanggal_yudisium">tanggal_yudisium</label>
+                        <label for="tanggal_yudisium">Tanggal Yudisium</label>
                         <input type="date" name="tanggal_yudisium" id="tanggal_yudisium" class="form-control" value="{{ $yudisium->tanggal_yudisium }}" maxlength="255" required>
                     </div>
 

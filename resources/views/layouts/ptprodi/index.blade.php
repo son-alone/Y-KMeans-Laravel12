@@ -42,14 +42,14 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>ID PT</th>
-                            <th>ID Prodi</th>
+                            <th>Perguruan Tinggi</th>
+                            <th>Prodi</th>
                             <th>Jenjang</th>
                             <th>Akreditasi</th>
                             <th>SK</th>
-                            <th>Tgl Berlaku</th>
-                            <th>Jml Dosen</th>
-                            <th>Jml Mhs</th>
+                            <th>Tanggal Berlaku</th>
+                            <th>Jumlah Dosen</th>
+                            <th>Jumlah Mahasiswa</th>
                             <th>Action</th>
                         </tr>
                     </thead>

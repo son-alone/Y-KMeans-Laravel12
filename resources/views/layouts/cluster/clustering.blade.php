@@ -29,8 +29,12 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="id_prodi">ID Prodi</label>
-                    <select name="id_prodi" id="id_prodi">
+                    <label for="id_prodi">Program Studi</label>
+                    <select name="id_prodi" id="id_prodi" class="form-control">
+                        @php
+            // Mengurutkan $data_prodi berdasarkan nama program studi
+            $data_prodi = $data_prodi->sortBy('nama');
+                        @endphp
                         @foreach ($data_prodi as $prodi)
                         <option value="{{ $prodi->id }}">{{ $prodi->nama }}</option>
                         @endforeach
@@ -51,8 +55,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="id_batch">ID Batch</label>
-                    <select name="id_batch" id="id_batch">
+                    <label for="id_batch">Batch</label>
+                    <select name="id_batch" id="id_batch" class="form-control">
                         <option value="All">Semua</option>
                         @foreach ($data_batch as $batch)
                         <option value="{{ $batch->id }}">{{ $batch->nama }}</option>

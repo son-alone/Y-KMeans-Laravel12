@@ -45,11 +45,11 @@
                         <thead>
                             <tr>
                                 <th>Provinsi</th>
-                                <th>Nama Perguruan Tinggi</th>
+                                <th>Perguruan Tinggi</th>
                                 <th>Nomor Telepon</th>
                                 <th>Email</th>
                                 <th>Alamat</th>
-                                <th>Logo</th>
+                                <th>Akreditasi</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -61,7 +61,7 @@
                                     <td>{{ $item->no_hp }}</td>  
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->alamat }}</td>
-                                    <td>{{ $item->logo }}</td>             
+                                    <td>{{ $item->akreditasi }}</td>             
                                     <td>
                                         @can('pt-edit')
                                     <a href="{{ route('pt.edit', $item->id) }}" class="btn btn-primary">Edit</a>

@@ -14,7 +14,7 @@
             </li>
 
             @can('role-list')
-            <li class="menu-header">Hak Akses</li>
+            <li class="menu-header">Access</li>
             
             <li class="{{ Request::is('hakakses') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route("roles.index") }}"><i class="fas fa-user-shield"></i> <span>Roles</span></a>
@@ -22,7 +22,7 @@
             @endcan
             @can('user-list')
             <li class="{{ Request::is('hakakses') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route("users.index") }}"><i class="fas fa-user-shield"></i> <span>Pengguna</span></a>
+                <a class="nav-link" href="{{ route("users.index") }}"><i class="fas fa-user"></i> <span>Pengguna</span></a>
             </li>
             @endcan
 
@@ -38,13 +38,13 @@
 
             @can('provinsi-list')
             <li class="{{ Request::is('provinsi') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('provinsi') }}"><i class="fas fa-university"></i> <span> Data Provinsi </span></a>
+                <a class="nav-link" href="{{ url('provinsi') }}"><i class="fas fa-flag"></i> <span> Data Provinsi </span></a>
             </li>
             @endcan
 
             @can('prodi-list')
             <li class="{{ Request::is('prodi') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('prodi') }}"><i class="fas fa-university"></i> <span> Data Prodi </span></a>
+                <a class="nav-link" href="{{ url('prodi') }}"><i class="fas fa-certificate"></i> <span> Data Prodi </span></a>
             </li>
             @endcan
 
@@ -56,35 +56,35 @@
 
             @can('ptprodi-list')
             <li class="{{ Request::is('ptprodi') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('ptprodi') }}"><i class="fas fa-university"></i> <span> Data Prodi Perguruan Tinggi </span></a>
+                <a class="nav-link" href="{{ url('ptprodi') }}"><i class="fas fa-school flag"></i> <span> Data Prodi Perguruan Tinggi </span></a>
             </li>
             @endcan
 
             @can('batch-list')
             <li class="{{ Request::is('batch') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('batch') }}"><i class="fas fa-university"></i> <span> Data Batch </span></a>
+                <a class="nav-link" href="{{ url('batch') }}"><i class="fas fa-equals"></i> <span> Data Batch </span></a>
             </li>
             @endcan
 
             @can('yudisium-list')
             <li class="{{ Request::is('yudisium') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('yudisium') }}"><i class="fas fa-university"></i> <span> Data Yudisium </span></a>
+                <a class="nav-link" href="{{ url('yudisium') }}"><i class="fas fa-scroll"></i> <span> Data Yudisium </span></a>
             </li>
             @endcan
 
             @can('detail-list')
             <li class="{{ Request::is('detail') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('detail') }}"><i class="fas fa-university"></i> <span> Data Detail Yudisium </span></a>
+                <a class="nav-link" href="{{ url('detail') }}"><i class="fas fa-graduation-cap"></i> <span> Data Detail Yudisium </span></a>
             </li>
             @endcan
 
             @can('clustering-list')
             <li class="{{ Request::is('clustering') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('clustering') }}"><i class="fas fa-university"></i> <span> Clustering Mahasiswa </span></a>
+                <a class="nav-link" href="{{ url('clustering') }}"><i class="fas fa-users"></i> <span> Clustering Mahasiswa </span></a>
             </li>
             @endcan
 
-            
+            <!--  
             <li class="menu-header">Examples</li>
             <li class="{{ Request::is('blank-page') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('blank-page') }}"><i class="far fa-square"></i> <span>Blank Page</span></a>
@@ -125,6 +125,7 @@
             <li class="{{ Request::is('about-example') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('about-example') }}"><i class="fas fa-info-circle"></i> <span>About Example</span></a>
             </li>
+            -->
         </ul>
     </aside>
 </div>

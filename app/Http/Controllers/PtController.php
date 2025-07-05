@@ -42,7 +42,7 @@ class PtController extends Controller
             'no_hp' => 'required',
             'email' => 'required',
             'alamat' => 'required',
-            'logo' => 'required',
+            'akreditasi' => 'required',
         ]);
 
             $pt = new Pt();
@@ -51,7 +51,7 @@ class PtController extends Controller
             $pt->no_hp = $request->no_hp;
             $pt->email = $request->email;
             $pt->alamat = $request->alamat;
-            $pt->logo = $request->logo;
+            $pt->akreditasi = $request->akreditasi;
             if ($pt->save()) {
                 return redirect()->route('pt.index')->with('message', 'Data PT Berhasil Dibuat.');
             } else {
@@ -98,7 +98,7 @@ class PtController extends Controller
             'no_hp' => 'required|string|max:255',
             'email' => 'required|email',
             'alamat' => 'required|string|max:255',
-            'logo' => 'required|file',
+            'akreditasi' => 'required|string|max:255',
         ]);
 
         $pt->id_provinsi = $request->id_provinsi;
@@ -106,7 +106,7 @@ class PtController extends Controller
         $pt->no_hp = $request->no_hp;
         $pt->email = $request->email;
         $pt->alamat = $request->alamat;
-        $pt->logo = $request->logo;
+        $pt->akreditasi = $request->akreditasi;
         $pt->save();
 
         return redirect()->route('pt.index')->with('message', 'Edit Data Berhasil');

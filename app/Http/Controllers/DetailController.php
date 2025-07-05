@@ -229,4 +229,21 @@ class DetailController extends Controller
         session()->flash('message', 'Delete data berhasil');
         return redirect()->route('detail.index');
     }
+
+    public function template(Request $request)
+    {
+        $search = $request->get('search');
+        \Log::info('Fetching batch template', ['search' => $search]);
+
+        $query = Detail::query();
+        
+        if ($search) {
+            $query->where('npm', 'like', "%{$search}%")
+                  ->orWhere('nama_mhs', 'like', "%{$search}%");
+        }
+        
+        $data['detail'] = $query->get();
+        
+        return view('layouts.detail.template', $data);
+    }
 }

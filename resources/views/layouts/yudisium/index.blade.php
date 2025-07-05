@@ -112,12 +112,12 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Id Batch</th>
-                            <th>Id PT</th>
-                            <th>Tgl Yudisium</th>
+                            <th>Batch</th>
+                            <th>Perguruan Tinggi</th>
+                            <th>Tanggal Yudisium</th>
                             <th>File</th>
-                            <th>Tgl Verifikasi</th>
-                            <th>Id Verifikator</th>
+                            <th>Tanggal Verifikasi</th>
+                            <th>Verifikator</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -132,20 +132,22 @@
                                 </a>
                             </td>
                             <td><?php
-                                $utcTime = $item->tanggal_verifikasi; // Misalnya waktu dalam UTC dari database
-                                $localTime = \Carbon\Carbon::parse($utcTime)->timezone('Asia/Jakarta');
-                                echo $localTime;
+                                if ($item->tanggal_verifikasi) {
+                                    $utcTime = $item->tanggal_verifikasi; // Misalnya waktu dalam UTC dari database
+                                    $localTime = \Carbon\Carbon::parse($utcTime)->timezone('Asia/Jakarta');
+                                    echo $localTime;
+                                }
                                 ?></td>
                             <td>{{ $item->Verifikator?->name }}</td>
                             <td>
-                              @can('yudisium-verifikasi')  
-                            <a href="{{ route('verifikasi', $item->id) }}" class="btn btn-danger">Verifikasi</a>
+                                @can('yudisium-verifikasi')
+                                <a href="{{ route('verifikasi', $item->id) }}" class="btn btn-danger">Verifikasi</a>
                                 @endcan
-                            @can('yudisium-edit')
-                            <a href="{{ route('yudisium.edit', $item->id) }}" class="btn btn-primary">Edit</a>
-                            @endcan    
-                            @can('yudisium-delete')
-                            <form action="{{ route('yudisium.delete', $item->id) }}" method="POST" style="display: inline-block;">
+                                @can('yudisium-edit')
+                                <a href="{{ route('yudisium.edit', $item->id) }}" class="btn btn-primary">Edit</a>
+                                @endcan
+                                @can('yudisium-delete')
+                                <form action="{{ route('yudisium.delete', $item->id) }}" method="POST" style="display: inline-block;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>

@@ -31,8 +31,12 @@
                         @can('detail-create')
                         <a href="{{ route('detail.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
                         @endcan
+
+                        @can('detail-import')
                         <!-- Trigger the modal -->
                         <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#uploadModal">Import Data</button>
+                        @endcan
+                        <a href="{{ route('detail.template') }}" class="btn btn-primary mb-3">Template Yudisium</a>
                         <form action="{{ route('detail.index') }}" method="GET">
                             <div class="row mt-3">
                                 <div class="col-md-3">
@@ -81,7 +85,7 @@
                                     <input type="text" name="search" class="form-control" placeholder="Cari NPM atau Nama Mahasiswa">
                                 </div>
                                 <div class="col-md-6 text-left">
-                                    <button class="btn btn-primary" type="submit">Filter</button>
+                                    <button class="btn btn-primary" type="submit">Filter/Search</button>
                                 </div>
                             </div>
                         </form>
@@ -90,11 +94,11 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>ID Provinsi</th>
-                            <th>ID Pt</th>
-                            <th>ID Prodi</th>
+                            <th>Provinsi</th>
+                            <th>Perguruan Tinggi</th>
+                            <th>Prodi</th>
                             <th>Jenjang</th>
-                            <th>ID Batch</th>
+                            <th>Batch</th>
                             <th>NPM</th>
                             <th>Nama Mahasiswa</th>
                             <th>IPK</th>
@@ -181,7 +185,6 @@
 
 @push('scripts')
 <!-- JS Libraries -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <!-- Page Specific JS File -->
 @endpush

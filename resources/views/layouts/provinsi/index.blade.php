@@ -44,7 +44,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Nama Provinsi</th>
+                            <th>Provinsi</th>
                             <th>Logo</th>
                             <th>Action</th>
                         </tr>

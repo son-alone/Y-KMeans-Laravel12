@@ -29,8 +29,8 @@
                     @csrf
 
                     <div class="form-group">
-                    <label for="id_provinsi">ID Provinsi</label>
-                    <select name="id_provinsi" id="id_provinsi">
+                    <label for="id_provinsi">Provinsi</label>
+                    <select name="id_provinsi" id="id_provinsi" class="form-control">
                         @foreach ($data_provinsi as $provinsi)
                         <option value="{{ $provinsi->id }}">{{ $provinsi->nama_provinsi }}</option>
                         @endforeach
@@ -38,7 +38,7 @@
                 </div>
 
                     <div class="form-group">
-                        <label for="nama_pt">Nama PT</label>
+                        <label for="nama_pt">Nama Perguruan Tinggi</label>
                         <input type="text" name="nama_pt" id="nama_pt" class="form-control">
                     </div>
 
@@ -56,8 +56,8 @@
                         <input type="text" name="alamat" id="alamat" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="logo">Logo</label>
-                        <input type="file" name="logo" id="logo" class="form-control">
+                        <label for="akreditasi">Akreditasi</label>
+                        <input type="text" name="akreditasi" id="akreditasi" class="form-control">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>

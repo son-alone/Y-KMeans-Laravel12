@@ -28,8 +28,8 @@
             <form action="{{ route('ptprodi.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="id_pt">ID PT</label>
-                    <select name="id_pt" id="id_pt">
+                    <label for="id_pt">Perguruan Tinggi</label>
+                    <select name="id_pt" id="id_pt" class="form-control">
                         @foreach ($data_pt as $pt)
                         <option value="{{ $pt->id }}">{{ $pt->nama_pt }}</option>
                         @endforeach
@@ -37,8 +37,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="id_prodi">ID Prodi</label>
-                    <select name="id_prodi" id="id_prodi">
+                    <label for="id_prodi">Prodi</label>
+                    <select name="id_prodi" id="id_prodi" class="form-control">
                         @foreach ($data_prodi as $prodi)
                         <option value="{{ $prodi->id }}">{{ $prodi->nama }}</option>
                         @endforeach
@@ -65,16 +65,16 @@
                     <input type="text" name="sk" id="sk" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="tanggal_berlaku">Tgl Berlaku</label>
+                    <label for="tanggal_berlaku">Tanggal Berlaku</label>
                     <input type="date" name="tanggal_berlaku" id="tanggal_berlaku" class="form-control">
                 </div>
 
                 <div class="form-group">
-                    <label for="jumlah_dosen">Jml Dosen</label>
+                    <label for="jumlah_dosen">Jumlah Dosen</label>
                     <input type="text" name="jumlah_dosen" id="jumlah_dosen" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="jumlah_mahasiswa">Jml Mhs</label>
+                    <label for="jumlah_mahasiswa">Jumlah Mahasiswa</label>
                     <input type="text" name="jumlah_mahasiswa" id="jumlah_mahasiswa" class="form-control">
                 </div>
 
