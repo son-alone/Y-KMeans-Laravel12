@@ -25,11 +25,11 @@
             @endif
 
             <div class="section-body">
-            <form action="{{ route('provinsi.store') }}" method="POST">
+            <form action="{{ route('provinsi.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="nama_provinsi">Nama Provinsi</label>
-                        <input type="text" name="nama_provinsi" id="nama_provinsi" class="form-control">
+                        <input type="text" name="nama_provinsi" id="nama_provinsi" class="form-control" required>
                     </div>
 
                     <div class="form-group">

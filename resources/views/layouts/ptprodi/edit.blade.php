@@ -18,7 +18,7 @@
 
             <div class="form-group">
                 <label for="id_pt">Perguruan Tinggi</label>
-                <select name="id_pt" id="id_pt" class="form-control">
+                <select name="id_pt" id="id_pt" class="form-control" required>
                     @foreach ($data_pt as $pt)
                     <option value="{{ $pt->id }}" <?php if ($pt->id == $ptprodi->id_pt) echo "selected"; ?>>{{ $pt->nama_pt }}</option>
                     @endforeach
@@ -27,7 +27,7 @@
 
             <div class="form-group">
                 <label for="id_prodi">Prodi</label>
-                <select name="id_prodi" id="id_prodi" class="form-control">
+                <select name="id_prodi" id="id_prodi" class="form-control" required>
                     @foreach ($data_prodi as $prodi)
                     <option value="{{ $prodi->id }}" <?php if ($prodi->id == $ptprodi->id_prodi) echo "selected"; ?>>{{ $prodi->nama }}</option>
                     @endforeach

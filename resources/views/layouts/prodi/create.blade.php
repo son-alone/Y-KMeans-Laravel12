@@ -29,12 +29,12 @@
                     @csrf
                     <div class="form-group">
                         <label for="nama">Nama</label>
-                        <input type="text" name="nama" id="nama" class="form-control">
+                        <input type="text" name="nama" id="nama" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label for="keterangan">Keterangan</label>
-                        <select type="text" name="keterangan" id="keterangan" class="form-control">
+                        <select type="text" name="keterangan" id="keterangan" class="form-control" required>
                         <option value="Aktif">Aktif</option>
                         <option value="Tidak Aktif">Tidak Aktif</option>
                     </select>

@@ -14,86 +14,95 @@
         </div>
 
         @if (session('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
+        <div class="alert alert-success">{{ session('message') }}</div>
         @endif
         @if (session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
+        <div class="alert alert-danger">{{ session('error') }}</div>
         @endif
 
         <div class="section-body">
             <div class="table-responsive">
+
                 <div class="row mb-3">
                     <div class="col-md-12">
                         @can('detail-create')
                         <a href="{{ route('detail.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
                         @endcan
-
                         @can('detail-import')
-                        <!-- Trigger the modal -->
                         <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#uploadModal">Import Data</button>
                         @endcan
+                        @can('detail-template')
                         <a href="{{ route('detail.template') }}" class="btn btn-primary mb-3">Template Yudisium</a>
-                        <form action="{{ route('detail.index') }}" method="GET">
-                            <div class="row mt-3">
-                                <div class="col-md-3">
-                                    <select name="provinsi" class="form-control">
-                                        <option value="">Pilih Provinsi</option>
-                                        @foreach ($provinsiList as $provinsi)
-                                        <option value="{{ $provinsi->id }}" {{ request('provinsi') == $provinsi->id ? 'selected' : '' }}>
-                                            {{ $provinsi->nama_provinsi }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <select name="pt" class="form-control">
-                                        <option value="">Pilih Perguruan Tinggi</option>
-                                        @foreach ($ptList as $pt)
-                                        <option value="{{ $pt->id }}" {{ request('pt') == $pt->id ? 'selected' : '' }}>
-                                            {{ $pt->nama_pt }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <select name="prodi" class="form-control">
-                                        <option value="">Pilih Program Studi</option>
-                                        @foreach ($prodiList as $prodi)
-                                        <option value="{{ $prodi->id }}" {{ request('prodi') == $prodi->id ? 'selected' : '' }}>
-                                            {{ $prodi->nama }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <select name="batch" class="form-control">
-                                        <option value="">Pilih Batch</option>
-                                        @foreach ($batchList as $batch)
-                                        <option value="{{ $batch->id }}" {{ request('batch') == $batch->id ? 'selected' : '' }}>
-                                            {{ $batch->nama }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-6 text-right">
-                                    <input type="text" name="search" class="form-control" placeholder="Cari NPM atau Nama Mahasiswa">
-                                </div>
-                                <div class="col-md-6 text-left">
-                                    <button class="btn btn-primary" type="submit">Filter/Search</button>
-                                </div>
-                            </div>
-                        </form>
+                        @endcan
                     </div>
                 </div>
+
+                <!-- Form Filter (GET) -->
+                <form action="{{ route('detail.index') }}" method="GET" class="mb-3">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <select name="provinsi" class="form-control">
+                                <option value="">Pilih Provinsi</option>
+                                @foreach ($provinsiList as $provinsi)
+                                <option value="{{ $provinsi->id }}" {{ request('provinsi') == $provinsi->id ? 'selected' : '' }}>
+                                    {{ $provinsi->nama_provinsi }}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select name="pt" class="form-control">
+                                <option value="">Pilih Perguruan Tinggi</option>
+                                @foreach ($ptList as $pt)
+                                <option value="{{ $pt->id }}" {{ request('pt') == $pt->id ? 'selected' : '' }}>
+                                    {{ $pt->nama_pt }}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select name="prodi" class="form-control">
+                                <option value="">Pilih Program Studi</option>
+                                @foreach ($prodiList as $prodi)
+                                <option value="{{ $prodi->id }}" {{ request('prodi') == $prodi->id ? 'selected' : '' }}>
+                                    {{ $prodi->nama }}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select name="batch" class="form-control">
+                                <option value="">Pilih Batch</option>
+                                @foreach ($batchList as $batch)
+                                <option value="{{ $batch->id }}" {{ request('batch') == $batch->id ? 'selected' : '' }}>
+                                    {{ $batch->nama }}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6 text-right">
+                            <input type="text" name="search" class="form-control" placeholder="Cari NPM atau Nama Mahasiswa">
+                        </div>
+                        <div class="col-md-6 text-left">
+                            <button class="btn btn-primary" type="submit">Filter/Search</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Form Bulk Delete (POST) -->
+                @can('detail-delete')
+                <form action="{{ route('detail.bulkDelete') }}" method="POST" id="bulkDeleteForm">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger mb-3" onclick="return confirm('Yakin ingin hapus semua data terpilih?')">Delete Selected</button>
+                @endcan
+
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            <th><input type="checkbox" id="checkAll"></th>
                             <th>Provinsi</th>
                             <th>Perguruan Tinggi</th>
                             <th>Prodi</th>
@@ -112,6 +121,7 @@
                     <tbody>
                         @foreach ($detail as $item)
                         <tr>
+                            <td><input type="checkbox" name="ids[]" value="{{ $item->id }}"></td>
                             <td>{{ $item->pt?->provinsi?->nama_provinsi }}</td>
                             <td>{{ $item->pt?->nama_pt }}</td>
                             <td>{{ $item->prodi?->nama }}</td>
@@ -126,11 +136,10 @@
                             <td>{{ $item->jk }}</td>
                             <td>
                                 @can('detail-edit')
-                            <a href="{{ route('detail.edit', $item->id) }}" class="btn btn-primary">Edit</a>
+                                <a href="{{ route('detail.edit', $item->id) }}" class="btn btn-primary">Edit</a>
                                 @endcan
-                                
                                 @can('detail-delete')
-                            <form action="{{ route('detail.delete', $item->id) }}" method="POST" style="display: inline-block;">
+                                <form action="{{ route('detail.delete', $item->id) }}" method="POST" style="display:inline-block;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -141,6 +150,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                </form>
             </div>
         </div>
     </section>
@@ -163,9 +173,10 @@
                         <label for="yudisium_id">Pilih ID Yudisium</label>
                         <select name="yudisium_id" class="form-control" required>
                             <option value="">Pilih ID Yudisium</option>
-                            <!-- Loop through the Yudisium IDs -->
                             @foreach ($yudisiumList as $yudisium)
-                            <option value="{{ $yudisium->id }}">{{ $yudisium->pt->nama_pt . " batch : " . $yudisium->batch->nama  }}</option>
+                            <option value="{{ $yudisium->id }}">
+                                {{ $yudisium->pt->nama_pt . ' batch : ' . $yudisium->batch->nama }}
+                            </option>
                             @endforeach
                         </select>
                     </div>
@@ -179,12 +190,15 @@
         </div>
     </div>
 </div>
-
-
 @endsection
 
 @push('scripts')
-<!-- JS Libraries -->
-
-<!-- Page Specific JS File -->
+<script>
+    document.getElementById('checkAll').onclick = function () {
+        let checkboxes = document.getElementsByName('ids[]');
+        for (let checkbox of checkboxes) {
+            checkbox.checked = this.checked;
+        }
+    };
+</script>
 @endpush

@@ -29,7 +29,7 @@
                     @csrf
 
                     <div class="form-group">
-                    <label for="id_provinsi">Provinsi</label>
+                    <label for="id_provinsi">Provinsi</label required>
                     <select name="id_provinsi" id="id_provinsi" class="form-control">
                         @foreach ($data_provinsi as $provinsi)
                         <option value="{{ $provinsi->id }}">{{ $provinsi->nama_provinsi }}</option>
@@ -39,25 +39,25 @@
 
                     <div class="form-group">
                         <label for="nama_pt">Nama Perguruan Tinggi</label>
-                        <input type="text" name="nama_pt" id="nama_pt" class="form-control">
+                        <input type="text" name="nama_pt" id="nama_pt" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label for="no_hp">No HP</label>
-                        <input type="number" name="no_hp" id="no_hp" class="form-control">
+                        <input type="number" name="no_hp" id="no_hp" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="email" class="form-control">
+                        <input type="email" name="email" id="email" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
-                        <input type="text" name="alamat" id="alamat" class="form-control">
+                        <input type="text" name="alamat" id="alamat" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="akreditasi">Akreditasi</label>
-                        <input type="text" name="akreditasi" id="akreditasi" class="form-control">
+                        <input type="text" name="akreditasi" id="akreditasi" class="form-control" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>

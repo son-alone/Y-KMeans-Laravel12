@@ -4,73 +4,6 @@
 
 @push('style')
 <!-- Custom CSS for Modal -->
-<style>
-    /* Modal Container */
-    .custom-modal {
-        display: none;
-        /* Hidden by default */
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        /* Dark background */
-        padding-top: 60px;
-    }
-
-    /* Modal Content */
-    .custom-modal-content {
-        background-color: #fff;
-        margin: 5% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 900px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Modal Header */
-    .custom-modal-header {
-        background-color: #007bff;
-        color: white;
-        padding: 15px;
-        border-radius: 10px 10px 0 0;
-        font-size: 1.5rem;
-        text-align: center;
-    }
-
-    /* Modal Body */
-    .custom-modal-body {
-        padding: 20px;
-    }
-
-    /* Close Button */
-    .custom-close {
-        color: #aaa;
-        font-size: 28px;
-        font-weight: bold;
-        position: absolute;
-        top: 10px;
-        right: 15px;
-    }
-
-    .custom-close:hover,
-    .custom-close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    /* PDF Viewer */
-    .custom-pdf-viewer {
-        width: 100%;
-        height: 500px;
-        border-radius: 8px;
-    }
-</style>
 @endpush
 
 @section('content')
@@ -96,7 +29,7 @@
             <div class="table-responsive">
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        @can('pt-create')
+                        @can('yudisium-create')
                         <a href="{{ route('yudisium.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
                         @endcan
                         <form action="{{ route('yudisium.index') }}" method="GET">
@@ -122,15 +55,25 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php use Illuminate\Support\Facades\Storage; @endphp
                         @foreach ($yudisium as $item)
                         <tr>
                             <td>{{ $item->batch?->nama }}</td>
                             <td>{{ $item->pt?->nama_pt }}</td>
                             <td>{{ $item->tanggal_yudisium }}</td>
-                            <td><a href="{{ asset('storage/' . trim($item->file)) }}" class="btn btn-info" target="_blank">
-                                    Download File PDF
-                                </a>
-                            </td>
+                            <td>
+    @php
+        $filePath = trim($item->file);
+    @endphp
+
+    @if ($filePath && Storage::disk('public')->exists($filePath))
+        <a href="{{ asset('storage/' . $filePath) }}" class="btn btn-info" target="_blank">
+            Download File PDF
+        </a>
+    @else
+        <span class="text-danger">File tidak ditemukan</span>
+    @endif
+</td>
                             <td><?php
                                 if ($item->tanggal_verifikasi) {
                                     $utcTime = $item->tanggal_verifikasi; // Misalnya waktu dalam UTC dari database

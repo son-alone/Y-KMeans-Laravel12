@@ -208,6 +208,21 @@ class DetailController extends Controller
         return redirect()->back()->with('message', 'Data successfully imported!');
     }
 
+    public function bulkDelete(Request $request)
+{
+    $ids = $request->input('ids');
+
+    if (!$ids || !is_array($ids)) {
+        return redirect()->back()->with('error', 'Tidak ada data yang dipilih untuk dihapus.');
+    }
+
+    try {
+        Detail::whereIn('id', $ids)->delete();
+        return redirect()->back()->with('message', 'Data terpilih berhasil dihapus.');
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Gagal menghapus data terpilih.');
+    }
+}
 
 
     /**

@@ -119,7 +119,7 @@
 
   <!-- HERO SECTION -->
   <section class="hero">
-    <h1 class="animate__animated animate__fadeInDown">SISPEK Yudisium</h1>
+    <h1 class="animate__animated animate__fadeInDown">SIKSPEK Yudisium</h1>
     <p class="animate__animated animate__fadeInUp">
     Sistem Pemeriksaan Persyaratan Kelulusan Yudisium
     </p>

@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/import', [DetailController::class, 'import'])->name('importExcel');
     Route::get('/template', [App\Http\Controllers\DetailController::class, 'template'])->name('detail.template');
 
+
     Route::get('/mahasiswa/tambah', [MahasiswaController::class, 'create']);
     Route::post('/mahasiswa/tambah', [MahasiswaController::class, 'store']);
     Route::get('/mahasiswa/{id}/edit', [MahasiswaController::class, 'edit']);
@@ -106,6 +107,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/detail/edit/{id}', [App\Http\Controllers\DetailController::class, 'edit'])->name('detail.edit');
     Route::put('/detail/update/{id}', [App\Http\Controllers\DetailController::class, 'update'])->name('detail.update');
     Route::delete('/detail/delete/{id}', [App\Http\Controllers\DetailController::class, 'destroy'])->name('detail.delete');
+    Route::delete('/detail/bulk-delete', [DetailController::class, 'bulkDelete'])->name('detail.bulkDelete');
 
     Route::get('/table-example', [App\Http\Controllers\ExampleController::class, 'table'])->name('table.example');
     Route::get('/clock-example', [App\Http\Controllers\ExampleController::class, 'clock'])->name('clock.example');

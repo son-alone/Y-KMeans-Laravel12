@@ -35,20 +35,25 @@ class ProvinsiController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama_provinsi' => 'required',
-            'logo' => 'required',
+            'nama_provinsi' => 'required|string|max:255',
+            'logo' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
         ]);
 
-            $provinsi = new Provinsi();
-            $provinsi->nama_provinsi = $request->nama_provinsi;
-            $provinsi->logo = $request->logo;
-            if ($provinsi->save()) {
-                return redirect()->route('provinsi.index')->with('message', 'Data Provinsi Berhasil Dibuat.');
-            } else {
-                return redirect()->back()->with('error', 'Gagal Menambah Data Provinsi');
-            }
-            return redirect()->route('provinsi.index');
+        $fileName = null;
+
+        if ($request->hasFile('logo')) {
+            $file = $request->file('logo');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads'), $fileName);
         }
+
+        $provinsi = new Provinsi();
+        $provinsi->nama_provinsi = $request->nama_provinsi;
+        $provinsi->logo = $fileName;
+        $provinsi->save();
+
+        return redirect()->route('provinsi.index')->with('message', 'Data Provinsi Berhasil Dibuat.');
+    }
 
     /**
      * Display the specified resource.
@@ -73,27 +78,29 @@ class ProvinsiController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-{
-    $provinsi = Provinsi::find($id);
-    if (!$provinsi) {
-        return redirect()->back()->with('error', 'Data Provinsi tidak ditemukan');
-    }
+    {
+        $provinsi = Provinsi::find($id);
+        if (!$provinsi) {
+            return redirect()->back()->with('error', 'Data Provinsi tidak ditemukan');
+        }
 
-    try {
         $validatedData = $request->validate([
             'nama_provinsi' => 'required|string|max:255',
-            'logo' => 'required|file',
+            'logo' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
         ]);
 
         $provinsi->nama_provinsi = $request->nama_provinsi;
-        $provinsi->logo = $request->logo;
+
+        if ($request->hasFile('logo')) {
+            $fileName = time() . '_' . $request->file('logo')->getClientOriginalName();
+            $request->file('logo')->move(public_path('uploads'), $fileName);
+            $provinsi->logo = $fileName;
+        }
+
         $provinsi->save();
 
         return redirect()->route('provinsi.index')->with('message', 'Edit Data Berhasil');
-    } catch (\Exception $e) {
-        return redirect()->back()->with('error', 'Edit Data Gagal');
     }
-}
 
 
 

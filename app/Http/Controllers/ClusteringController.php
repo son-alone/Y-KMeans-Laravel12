@@ -136,6 +136,18 @@ class ClusteringController extends Controller
         // Parameters
         $k = $num_cluster; // Jumlah cluster sesuai input
 
+if (count($data) === 0) {
+    return redirect()->back()->with('error', 'Data tidak ditemukan untuk parameter yang dipilih.');
+}
+
+if ($k < 1) {
+    return redirect()->back()->with('error', 'Jumlah cluster minimal harus 1.');
+}
+
+if ($k > count($data)) {
+    return redirect()->back()->with('error', 'Jumlah cluster tidak boleh melebihi jumlah data yang tersedia.');
+}
+
         // Run K-Means
         $result = $this->kMeans($data, $k);
         // dd($result['centroids']);

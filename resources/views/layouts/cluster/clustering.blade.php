@@ -30,7 +30,7 @@
 
                 <div class="form-group">
                     <label for="id_prodi">Program Studi</label>
-                    <select name="id_prodi" id="id_prodi" class="form-control">
+                    <select name="id_prodi" id="id_prodi" class="form-control" required>
                         @php
             // Mengurutkan $data_prodi berdasarkan nama program studi
             $data_prodi = $data_prodi->sortBy('nama');
@@ -43,7 +43,7 @@
 
                 <div class="form-group">
                     <label for="jenjang">Jenjang</label>
-                    <select name="jenjang" id="jenjang" class="form-control">
+                    <select name="jenjang" id="jenjang" class="form-control" required>
                         <option value="All">Semua</option>
                         <option value="D3">D3</option>
                         <option value="D4">D4</option>
@@ -56,7 +56,7 @@
 
                 <div class="form-group">
                     <label for="id_batch">Batch</label>
-                    <select name="id_batch" id="id_batch" class="form-control">
+                    <select name="id_batch" id="id_batch" class="form-control" required>
                         <option value="All">Semua</option>
                         @foreach ($data_batch as $batch)
                         <option value="{{ $batch->id }}">{{ $batch->nama }}</option>
@@ -66,7 +66,7 @@
 
                 <div class="form-group">
                     <label for="num_cluster">Jumlah Cluster</label>
-                    <input type="number" name="num_cluster" id="num_cluster" class="form-control">
+                    <input type="number" name="num_cluster" id="num_cluster" class="form-control" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Cluster</button>

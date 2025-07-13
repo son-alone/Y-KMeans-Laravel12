@@ -29,7 +29,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="id_yudisium">Tanggal Yudisium</label>
-                    <select name="id_yudisium" id="id_yudisium" class="form-control">
+                    <select name="id_yudisium" id="id_yudisium" class="form-control" required>
                         @foreach ($data_yudisium as $yudisium)
                         <option value="{{ $yudisium->id }}">{{ $yudisium->tanggal_yudisium }}</option>
                         @endforeach
@@ -38,7 +38,7 @@
 
                 <div class="form-group">
                     <label for="id_pt">Perguruan Tinggi</label>
-                    <select name="id_pt" id="id_pt" class="form-control">
+                    <select name="id_pt" id="id_pt" class="form-control" required>
                         @foreach ($data_pt as $pt)
                         <option value="{{ $pt->id }}">{{ $pt->nama_pt }}</option>
                         @endforeach
@@ -47,7 +47,7 @@
 
                     <div class="form-group">
                     <label for="id_prodi">Prodi</label>
-                    <select name="id_prodi" id="id_prodi" class="form-control">
+                    <select name="id_prodi" id="id_prodi" class="form-control" required>
                         @foreach ($data_prodi as $prodi)
                         <option value="{{ $prodi->id }}">{{ $prodi->nama }}</option>
                         @endforeach
@@ -56,7 +56,7 @@
 
                     <div class="form-group">
                     <label for="jenjang">Jenjang</label>
-                    <select type="text" name="jenjang" id="jenjang" class="form-control">
+                    <select type="text" name="jenjang" id="jenjang" class="form-control" required>
                         <option value="D3">D3</option>
                         <option value="D4">D4</option>
                         <option value="S1">S1</option>
@@ -68,7 +68,7 @@
 
                     <div class="form-group">
                     <label for="id_batch">Batch</label>
-                    <select name="id_batch" id="id_batch" class="form-control">
+                    <select name="id_batch" id="id_batch" class="form-control" required>
                         @foreach ($data_batch as $batch)
                         <option value="{{ $batch->id }}">{{ $batch->nama }}</option>
                         @endforeach
@@ -77,31 +77,31 @@
                     
                     <div class="form-group">
                         <label for="npm">NPM</label>
-                        <input type="text" name="npm" id="npm" class="form-control">
+                        <input type="text" name="npm" id="npm" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="nama_mhs">Nama Mahasiswa</label>
-                        <input type="text" name="nama_mhs" id="nama_mhs" class="form-control">
+                        <input type="text" name="nama_mhs" id="nama_mhs" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="ipk">IPK</label>
-                        <input type="double" name="ipk" id="ipk" class="form-control">
+                        <input type="double" name="ipk" id="ipk" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="jml_sks">Jumlah SKS</label>
-                        <input type="number" name="jml_sks" id="jml_sks" class="form-control">
+                        <input type="number" name="jml_sks" id="jml_sks" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="tgl_masuk">Tanggal Masuk</label>
-                        <input type="date" name="tgl_masuk" id="tgl_masuk" class="form-control">
+                        <input type="date" name="tgl_masuk" id="tgl_masuk" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="tgl_lulus">Tanggal Lulus</label>
-                        <input type="date" name="tgl_lulus" id="tgl_lulus" class="form-control">
+                        <input type="date" name="tgl_lulus" id="tgl_lulus" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="jk">Jenis Kelamin</label>
-                        <input type="text" name="jk" id="jk" class="form-control">
+                        <input type="text" name="jk" id="jk" class="form-control" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>

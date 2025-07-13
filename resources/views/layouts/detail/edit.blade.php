@@ -18,7 +18,7 @@
 
                 <div class="form-group">
                 <label for="id_yudisium">Tanggal Yudisium</label>
-                <select name="id_yudisium" id="id_yudisium" class="form-control">
+                <select name="id_yudisium" id="id_yudisium" class="form-control" required>
                     @foreach ($data_yudisium as $yudisium)
                     <option value="{{ $yudisium->id }}" <?php if ($yudisium->id == $detail->id) echo "selected"; ?>>{{ $yudisium->tanggal_yudisium }}</option>
                     @endforeach
@@ -27,7 +27,7 @@
 
             <div class="form-group">
                 <label for="id_pt">Perguruan Tinggi</label>
-                <select name="id_pt" id="id_pt" class="form-control">
+                <select name="id_pt" id="id_pt" class="form-control" required>
                     @foreach ($data_pt as $pt)
                     <option value="{{ $pt->id }}" <?php if ($pt->id == $detail->id_pt) echo "selected"; ?>>{{ $pt->nama_pt }}</option>
                     @endforeach
@@ -36,7 +36,7 @@
 
             <div class="form-group">
                 <label for="id_prodi">Prodi</label>
-                <select name="id_prodi" id="id_prodi" class="form-control">
+                <select name="id_prodi" id="id_prodi" class="form-control" required>
                     @foreach ($data_prodi as $prodi)
                     <option value="{{ $prodi->id }}" <?php if ($prodi->id == $detail->id_prodi) echo "selected"; ?>>{{ $prodi->nama }}</option>
                     @endforeach
@@ -57,7 +57,7 @@
 
             <div class="form-group">
                 <label for="id_batch">Batch</label>
-                <select name="id_batch" id="id_batch" class="form-control">
+                <select name="id_batch" id="id_batch" class="form-control" required>
                     @foreach ($data_batch as $batch)
                     <option value="{{ $batch->id }}" <?php if ($batch->id == $detail->id_batch) echo "selected"; ?>>{{ $batch->nama }}</option>
                     @endforeach

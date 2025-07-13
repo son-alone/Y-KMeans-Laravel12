@@ -22,9 +22,15 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="logo">Logo</label>
-                    <input type="file" name="logo" id="logo" class="form-control" value="{{ $provinsi->logo }}" required>
-                </div>
+    <label for="logo">Logo</label>
+    @if ($provinsi->logo && file_exists(public_path('uploads/' . $provinsi->logo)))
+        <div class="mb-2">
+            <img src="{{ asset('uploads/' . $provinsi->logo) }}" alt="Logo Lama" width="80">
+        </div>
+    @endif
+    <input type="file" name="logo" id="logo" class="form-control">
+    <small class="form-text text-muted">Kosongkan jika tidak ingin mengubah logo.</small>
+</div>
 
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>

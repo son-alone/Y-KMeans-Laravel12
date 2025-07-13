@@ -53,7 +53,13 @@
                         @foreach ($provinsi as $item)
                         <tr>
                             <td>{{ $item->nama_provinsi }}</td>
-                            <td>{{ $item->logo }}</td>
+                            <td>
+    @if ($item->logo && file_exists(public_path('uploads/' . $item->logo)))
+        <img src="{{ asset('uploads/' . $item->logo) }}" alt="Logo" width="60">
+    @else
+        <span class="text-muted">Tidak ada logo</span>
+    @endif
+</td>
                             <td>
                                 @can('provinsi-edit')
                                 <a href="{{ route('provinsi.edit', $item->id) }}" class="btn btn-primary">Edit</a>
