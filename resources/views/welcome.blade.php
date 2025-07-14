@@ -34,7 +34,6 @@
       padding: 0;
       overflow-x: hidden;
     }
-
     /* HERO SECTION */
     .hero {
       min-height: 100vh;
@@ -47,19 +46,16 @@
       padding: 0 20px;
       color: #fff;
     }
-
     .hero h1 {
       font-size: 3rem;
       font-weight: 700;
       margin-bottom: 20px;
     }
-
     .hero p {
       font-size: 1.25rem;
       margin-bottom: 30px;
       max-width: 600px;
     }
-
     .btn-cta {
       background-color: #fff;
       color: var(--secondary-color);
@@ -69,13 +65,20 @@
       font-weight: 600;
       transition: all 0.3s ease;
     }
-
     .btn-cta:hover {
       background-color: var(--accent-color);
       color: #fff;
       transform: scale(1.05);
     }
-
+    /* SECTION STYLE */
+    .section {
+      padding: 80px 20px;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
     /* FEATURE CARDS */
     .feature-card {
       border: none;
@@ -84,30 +87,25 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       background-color: #fff;
     }
-
     .feature-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
     }
-
     .feature-card i {
       font-size: 3rem;
       color: var(--primary-color);
       margin-bottom: 15px;
     }
-
     /* CONTRIBUTORS */
     .contributors img {
       border-radius: 50%;
       border: 4px solid #fff;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
     .contributors img:hover {
       transform: scale(1.1);
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
-
     /* FOOTER */
     footer {
       background: var(--secondary-color);
@@ -115,40 +113,15 @@
       text-align: center;
       padding: 30px 20px;
     }
-
-    /* INSTALL BANNER */
-    #installBanner {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      z-index: 9999;
-      background-color: #fff;
-      border-radius: 10px;
-      padding: 10px 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      border: 2px solid var(--primary-color);
-    }
-
-    #installBanner button {
-      margin-left: 10px;
-    }
   </style>
 </head>
 <body>
-
-  <!-- INSTALL BANNER -->
-  <div id="installBanner">
-    <span>Install this app?</span>
-    <button id="btnInstall" class="btn btn-sm btn-primary">Install</button>
-    <button id="btnCloseInstall" class="btn btn-sm btn-secondary">Close</button>
-  </div>
 
   <!-- HERO SECTION -->
   <section class="hero">
     <h1 class="animate__animated animate__fadeInDown">SIKSPEK Yudisium</h1>
     <p class="animate__animated animate__fadeInUp">
-      Sistem Pemeriksaan Persyaratan Kelulusan Yudisium
+    Sistem Pemeriksaan Persyaratan Kelulusan Yudisium
     </p>
     <a href="{{ route('login') }}" class="btn btn-cta animate__animated animate__zoomIn">Login</a>
     <p></p>
@@ -160,8 +133,33 @@
     <div class="container">
       <h2 class="section-title text-center" data-aos="fade-up">Features</h2>
       <div class="row g-4">
-        <!-- Feature Cards -->
-        <!-- ... -->
+        <div class="col-md-4" data-aos="flip-up">
+          <div class="card feature-card p-4 text-center">
+            <i class="fas fa-rocket"></i>
+            <h5 class="card-title mt-3">laravel 12</h5>
+            <p class="card-text">
+              Discover the latest features and enhancements in laravel 12, built for performance and simplicity.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="flip-up" data-aos-delay="100">
+          <div class="card feature-card p-4 text-center">
+            <i class="fas fa-layer-group"></i>
+            <h5 class="card-title mt-3">Stisla Template</h5>
+            <p class="card-text">
+              A modern, responsive, and customizable template integrated with Bootstrap 5 for a stunning UI.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="flip-up" data-aos-delay="200">
+          <div class="card feature-card p-4 text-center">
+            <i class="fas fa-user-shield"></i>
+            <h5 class="card-title mt-3">Laravel Breeze</h5>
+            <p class="card-text">
+              Secure and quick authentication setup with Laravel Breeze, making login systems effortless.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -174,17 +172,30 @@
         @php
           $contributors = [
             ['name' => 'M. Husaini Hasyim', 'img' => 'https://github.com/son-alone.png', 'link' => 'https://github.com/son-alone'],
-            // (daftar lengkap contributor)
+            ['name' => 'Vicky Maulana', 'img' => 'https://github.com/vickymaulana.png', 'link' => 'https://github.com/vickymaulana'],
+            ['name' => 'Ahmad Dimas Aldian Al-furqon', 'img' => 'https://github.com/anqois.png', 'link' => 'https://github.com/anqois'],
+            ['name' => 'Abdillah Khalid', 'img' => 'https://github.com/KhalidUnsri.png', 'link' => 'https://github.com/KhalidUnsri'],
+            ['name' => 'Haikal Tirta Albanna', 'img' => 'https://github.com/HaikalAlbanna.png', 'link' => 'https://github.com/HaikalAlbanna'],
+            ['name' => 'Meta Berliana', 'img' => 'https://github.com/Metabrln.png', 'link' => 'https://github.com/Metabrln'],
+            ['name' => 'Imelda Triadmajaya', 'img' => 'https://github.com/imeldatriajaya.png', 'link' => 'https://github.com/imeldatriajaya'],
+            ['name' => 'Hilwa Izzatinnafisah', 'img' => 'https://github.com/ksnwaa.png', 'link' => 'https://github.com/ksnwaa'],
+            ['name' => 'Triyana Sugiyarti', 'img' => 'https://github.com/TriyanaSgi.png', 'link' => 'https://github.com/TriyanaSgi'],
+            ['name' => 'Adelia Isni Hendrawan Putri', 'img' => 'https://github.com/lilisky07.png', 'link' => 'https://github.com/lilisky07'],
+            ['name' => 'Siti Nur Azizah', 'img' => 'https://github.com/sukasukajija.png', 'link' => 'https://github.com/sukasukajija'],
+            ['name' => 'Andre Satriawan', 'img' => 'https://github.com/andresa11satriawan.png', 'link' => 'https://github.com/andresa11satriawan'],
+            ['name' => 'Lathifah Putri Aresti', 'img' => 'https://github.com/lathifahputri.png', 'link' => 'https://github.com/lathifahputri'],
+            ['name' => 'Sisca Amelia', 'img' => 'https://github.com/siscaamelia.png', 'link' => 'https://github.com/siscaamelia'],
+            ['name' => 'M. Denny Tri Lisandi', 'img' => 'https://github.com/Koutsura.png', 'link' => 'https://github.com/Koutsura'],
           ];
         @endphp
 
         @foreach($contributors as $index => $contributor)
-        <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center" data-aos="flip-up" data-aos-delay="{{ $index * 50 }}">
-          <a href="{{ $contributor['link'] }}" target="_blank" class="text-decoration-none text-dark">
-            <img src="{{ $contributor['img'] }}" alt="{{ $contributor['name'] }}" class="img-fluid mb-2" width="100" height="100">
-            <h6>{{ $contributor['name'] }}</h6>
-          </a>
-        </div>
+          <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center" data-aos="flip-up" data-aos-delay="{{ $index * 50 }}">
+            <a href="{{ $contributor['link'] }}" target="_blank" class="text-decoration-none text-dark">
+              <img src="{{ $contributor['img'] }}" alt="{{ $contributor['name'] }}" class="img-fluid mb-2" width="100" height="100">
+              <h6>{{ $contributor['name'] }}</h6>
+            </a>
+          </div>
         @endforeach
       </div>
     </div>
@@ -203,31 +214,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ once: true, duration: 800 });
-
-    let deferredPrompt;
-    const installBanner = document.getElementById('installBanner');
-    const btnInstall = document.getElementById('btnInstall');
-    const btnClose = document.getElementById('btnCloseInstall');
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installBanner.style.display = 'block';
-    });
-
-    btnInstall.addEventListener('click', () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then(() => {
-          installBanner.style.display = 'none';
-          deferredPrompt = null;
-        });
-      }
-    });
-
-    btnClose.addEventListener('click', () => {
-      installBanner.style.display = 'none';
+    AOS.init({
+      once: true,
+      duration: 800,
     });
   </script>
 </body>
