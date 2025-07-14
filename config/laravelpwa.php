@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'name' => 'LaravelPWA',
+    'name' => 'Yudisium LLDIKTI2',
     'manifest' => [
-        'name' => env('APP_NAME', 'My PWA App'),
-        'short_name' => 'PWA',
+        'name' => env('APP_NAME', 'Aplikasi Pemeriksaan Persyaratan Yudisium LLDIKTI Wilayah II'),
+        'short_name' => 'Yudisium LLDIKTI2',
         'start_url' => '/',
         'background_color' => '#ffffff',
         'theme_color' => '#000000',
