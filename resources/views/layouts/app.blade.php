@@ -9,7 +9,7 @@
     @laravelPWA
 
     <!-- Title -->
-    <title>@yield('title') &mdash; Laravel - Stisla</title>
+    <title>@yield('title') &mdash; Aplikasi Pemeriksaan Persyaratan Yudisium LLDIKTI Wilayah II</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
