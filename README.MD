@@ -89,7 +89,7 @@ I extend my gratitude to all the interns at LLDIKTI 2 Division of Information Sy
 - [Triyana Sugiyarti](https://github.com/TriyanaSgi)
 - [Adelia Isni Hendrawan Putri](https://github.com/lilisky07)
 - [Siti Nur Azizah](https://github.com/sukasukajija)
-- [M. Husaini Hasyim](https://github.com/son-alone)
+- [Vicky Maulana](https://github.com/vickymaulana)
 - [Andre Satriawan](https://github.com/andresa11satriawan)
 - [Lathifah Putri Aresti](https://github.com/lathifahputri)
 - [Sisca Amelia](https://github.com/siscaamelia)
