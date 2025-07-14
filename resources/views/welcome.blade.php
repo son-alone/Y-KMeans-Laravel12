@@ -219,5 +219,57 @@
       duration: 800,
     });
   </script>
+
+<script>
+  let deferredPrompt;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Simpan event agar bisa dipanggil nanti
+    e.preventDefault();
+    deferredPrompt = e;
+
+    // Tampilkan banner install setiap refresh
+    showInstallBanner();
+  });
+
+  function showInstallBanner() {
+    const banner = document.createElement('div');
+    banner.innerHTML = `
+      <div style="
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        padding: 15px 20px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        z-index: 9999;
+        max-width: 90%;
+        text-align: center;">
+        <p style="margin: 0 0 10px;">Pasang aplikasi ini di layar utama?</p>
+        <button id="installBtn" style="background: #6c63ff; color: white; border: none; padding: 8px 20px; border-radius: 5px; font-weight: bold;">Install</button>
+        <button id="dismissBtn" style="margin-left: 10px; background: #ddd; color: #333; border: none; padding: 8px 15px; border-radius: 5px;">Tutup</button>
+      </div>
+    `;
+    document.body.appendChild(banner);
+
+    document.getElementById('installBtn').addEventListener('click', async () => {
+      banner.remove();
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const result = await deferredPrompt.userChoice;
+        console.log('User choice:', result.outcome);
+        deferredPrompt = null;
+      }
+    });
+
+    document.getElementById('dismissBtn').addEventListener('click', () => {
+      banner.remove();
+    });
+  }
+</script>
+
+
 </body>
 </html>
