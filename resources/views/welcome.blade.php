@@ -6,15 +6,15 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Aplikasi Pemeriksaan Persyaratan Yudisium LLDIKTI Wilayah II</title>
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Poppins & Nunito -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <!-- Bootstrap -->
+  <!-- Bootstrap 5.3 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <!-- Animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <!-- AOS -->
+  <!-- AOS (Animate On Scroll) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
 
   <!-- Custom CSS -->
@@ -34,6 +34,7 @@
       padding: 0;
       overflow-x: hidden;
     }
+    /* HERO SECTION */
     .hero {
       min-height: 100vh;
       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -69,6 +70,7 @@
       color: #fff;
       transform: scale(1.05);
     }
+    /* SECTION STYLE */
     .section {
       padding: 80px 20px;
     }
@@ -77,6 +79,7 @@
       font-weight: 600;
       margin-bottom: 40px;
     }
+    /* FEATURE CARDS */
     .feature-card {
       border: none;
       border-radius: 15px;
@@ -93,6 +96,7 @@
       color: var(--primary-color);
       margin-bottom: 15px;
     }
+    /* CONTRIBUTORS */
     .contributors img {
       border-radius: 50%;
       border: 4px solid #fff;
@@ -102,6 +106,7 @@
       transform: scale(1.1);
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
+    /* FOOTER */
     footer {
       background: var(--secondary-color);
       color: #fff;
@@ -115,7 +120,9 @@
   <!-- HERO SECTION -->
   <section class="hero">
     <h1 class="animate__animated animate__fadeInDown">SIKSPEK Yudisium</h1>
-    <p class="animate__animated animate__fadeInUp">Sistem Pemeriksaan Persyaratan Kelulusan Yudisium</p>
+    <p class="animate__animated animate__fadeInUp">
+    Sistem Pemeriksaan Persyaratan Kelulusan Yudisium
+    </p>
     <a href="{{ route('login') }}" class="btn btn-cta animate__animated animate__zoomIn">Login</a>
     <p></p>
     <a href="{{ route('register') }}" class="btn btn-cta animate__animated animate__zoomIn">Register</a>
@@ -129,22 +136,28 @@
         <div class="col-md-4" data-aos="flip-up">
           <div class="card feature-card p-4 text-center">
             <i class="fas fa-rocket"></i>
-            <h5 class="card-title mt-3">Laravel 12</h5>
-            <p class="card-text">Discover the latest features and enhancements in Laravel 12, built for performance and simplicity.</p>
+            <h5 class="card-title mt-3">laravel 12</h5>
+            <p class="card-text">
+              Discover the latest features and enhancements in laravel 12, built for performance and simplicity.
+            </p>
           </div>
         </div>
         <div class="col-md-4" data-aos="flip-up" data-aos-delay="100">
           <div class="card feature-card p-4 text-center">
             <i class="fas fa-layer-group"></i>
             <h5 class="card-title mt-3">Stisla Template</h5>
-            <p class="card-text">A modern, responsive, and customizable template integrated with Bootstrap 5 for a stunning UI.</p>
+            <p class="card-text">
+              A modern, responsive, and customizable template integrated with Bootstrap 5 for a stunning UI.
+            </p>
           </div>
         </div>
         <div class="col-md-4" data-aos="flip-up" data-aos-delay="200">
           <div class="card feature-card p-4 text-center">
             <i class="fas fa-user-shield"></i>
             <h5 class="card-title mt-3">Laravel Breeze</h5>
-            <p class="card-text">Secure and quick authentication setup with Laravel Breeze, making login systems effortless.</p>
+            <p class="card-text">
+              Secure and quick authentication setup with Laravel Breeze, making login systems effortless.
+            </p>
           </div>
         </div>
       </div>
@@ -156,6 +169,26 @@
     <div class="container">
       <h2 class="section-title text-center" data-aos="fade-up">Contributors</h2>
       <div class="row justify-content-center g-4 contributors">
+        @php
+          $contributors = [
+            ['name' => 'M. Husaini Hasyim', 'img' => 'https://github.com/son-alone.png', 'link' => 'https://github.com/son-alone'],
+            ['name' => 'Vicky Maulana', 'img' => 'https://github.com/vickymaulana.png', 'link' => 'https://github.com/vickymaulana'],
+            ['name' => 'Ahmad Dimas Aldian Al-furqon', 'img' => 'https://github.com/anqois.png', 'link' => 'https://github.com/anqois'],
+            ['name' => 'Abdillah Khalid', 'img' => 'https://github.com/KhalidUnsri.png', 'link' => 'https://github.com/KhalidUnsri'],
+            ['name' => 'Haikal Tirta Albanna', 'img' => 'https://github.com/HaikalAlbanna.png', 'link' => 'https://github.com/HaikalAlbanna'],
+            ['name' => 'Meta Berliana', 'img' => 'https://github.com/Metabrln.png', 'link' => 'https://github.com/Metabrln'],
+            ['name' => 'Imelda Triadmajaya', 'img' => 'https://github.com/imeldatriajaya.png', 'link' => 'https://github.com/imeldatriajaya'],
+            ['name' => 'Hilwa Izzatinnafisah', 'img' => 'https://github.com/ksnwaa.png', 'link' => 'https://github.com/ksnwaa'],
+            ['name' => 'Triyana Sugiyarti', 'img' => 'https://github.com/TriyanaSgi.png', 'link' => 'https://github.com/TriyanaSgi'],
+            ['name' => 'Adelia Isni Hendrawan Putri', 'img' => 'https://github.com/lilisky07.png', 'link' => 'https://github.com/lilisky07'],
+            ['name' => 'Siti Nur Azizah', 'img' => 'https://github.com/sukasukajija.png', 'link' => 'https://github.com/sukasukajija'],
+            ['name' => 'Andre Satriawan', 'img' => 'https://github.com/andresa11satriawan.png', 'link' => 'https://github.com/andresa11satriawan'],
+            ['name' => 'Lathifah Putri Aresti', 'img' => 'https://github.com/lathifahputri.png', 'link' => 'https://github.com/lathifahputri'],
+            ['name' => 'Sisca Amelia', 'img' => 'https://github.com/siscaamelia.png', 'link' => 'https://github.com/siscaamelia'],
+            ['name' => 'M. Denny Tri Lisandi', 'img' => 'https://github.com/Koutsura.png', 'link' => 'https://github.com/Koutsura'],
+          ];
+        @endphp
+
         @foreach($contributors as $index => $contributor)
           <div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center" data-aos="flip-up" data-aos-delay="{{ $index * 50 }}">
             <a href="{{ $contributor['link'] }}" target="_blank" class="text-decoration-none text-dark">
@@ -171,7 +204,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p class="mb-1">&copy; {{ date('Y') }} Laravel 12 Modern. All Rights Reserved.</p>
+      <p class="mb-1">&copy; {{ date('Y') }} laravel 12 Modern. All Rights Reserved.</p>
       <p class="mb-0">Contributors: Muhammad Husaini Hasyim and LLDIKTI 2 Division of Information System Development Interns.</p>
     </div>
   </footer>
@@ -181,45 +214,60 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ once: true, duration: 800 });
+    AOS.init({
+      once: true,
+      duration: 800,
+    });
   </script>
+  <!-- Install PWA Prompt Script -->
+<script>
+  let deferredPrompt;
 
-  <!-- PWA INSTALL SCRIPT -->
-  <script>
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
 
-      const btn = document.createElement('button');
-      btn.innerText = 'Pasang Aplikasi';
-      btn.style.position = 'fixed';
-      btn.style.bottom = '20px';
-      btn.style.right = '20px';
-      btn.style.zIndex = '9999';
-      btn.style.padding = '12px 24px';
-      btn.style.backgroundColor = '#6c63ff';
-      btn.style.color = 'white';
-      btn.style.border = 'none';
-      btn.style.borderRadius = '50px';
-      btn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
-      btn.style.fontWeight = 'bold';
-      btn.classList.add('animate__animated', 'animate__fadeInUp');
+    if (window.matchMedia('(display-mode: browser)').matches) {
+      const installBanner = document.createElement('div');
+      installBanner.innerHTML = `
+        <div style="
+          position: fixed;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: #fff;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+          padding: 15px 25px;
+          z-index: 9999;
+          font-family: 'Poppins', sans-serif;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        ">
+          <span>📱 Install aplikasi ini ke layar utama?</span>
+          <button id="installBtn" style="
+            padding: 6px 16px;
+            background: #6c63ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          ">Install</button>
+        </div>
+      `;
+      document.body.appendChild(installBanner);
 
-      document.body.appendChild(btn);
-
-      btn.addEventListener('click', () => {
-        btn.remove();
+      document.getElementById('installBtn').addEventListener('click', () => {
+        installBanner.remove();
         deferredPrompt.prompt();
-        deferredPrompt.userChoice.then(choiceResult => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted install prompt');
-          }
+        deferredPrompt.userChoice.then(() => {
           deferredPrompt = null;
         });
       });
-    });
-  </script>
-
+    }
+  });
+</script>
 </body>
 </html>
