@@ -219,55 +219,5 @@
       duration: 800,
     });
   </script>
-  <!-- Install PWA Prompt Script -->
-<script>
-  let deferredPrompt;
-
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-
-    if (window.matchMedia('(display-mode: browser)').matches) {
-      const installBanner = document.createElement('div');
-      installBanner.innerHTML = `
-        <div style="
-          position: fixed;
-          bottom: 20px;
-          left: 50%;
-          transform: translateX(-50%);
-          background: #fff;
-          border: 1px solid #ccc;
-          border-radius: 10px;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-          padding: 15px 25px;
-          z-index: 9999;
-          font-family: 'Poppins', sans-serif;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        ">
-          <span>📱 Install aplikasi ini ke layar utama?</span>
-          <button id="installBtn" style="
-            padding: 6px 16px;
-            background: #6c63ff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-          ">Install</button>
-        </div>
-      `;
-      document.body.appendChild(installBanner);
-
-      document.getElementById('installBtn').addEventListener('click', () => {
-        installBanner.remove();
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then(() => {
-          deferredPrompt = null;
-        });
-      });
-    }
-  });
-</script>
 </body>
 </html>
