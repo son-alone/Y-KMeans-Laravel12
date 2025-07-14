@@ -171,6 +171,7 @@
       <div class="row justify-content-center g-4 contributors">
         @php
           $contributors = [
+            ['name' => 'M. Husaini Hasyim', 'img' => 'https://github.com/son-alone.png', 'link' => 'https://github.com/son-alone'],
             ['name' => 'Vicky Maulana', 'img' => 'https://github.com/vickymaulana.png', 'link' => 'https://github.com/vickymaulana'],
             ['name' => 'Ahmad Dimas Aldian Al-furqon', 'img' => 'https://github.com/anqois.png', 'link' => 'https://github.com/anqois'],
             ['name' => 'Abdillah Khalid', 'img' => 'https://github.com/KhalidUnsri.png', 'link' => 'https://github.com/KhalidUnsri'],
@@ -181,7 +182,6 @@
             ['name' => 'Triyana Sugiyarti', 'img' => 'https://github.com/TriyanaSgi.png', 'link' => 'https://github.com/TriyanaSgi'],
             ['name' => 'Adelia Isni Hendrawan Putri', 'img' => 'https://github.com/lilisky07.png', 'link' => 'https://github.com/lilisky07'],
             ['name' => 'Siti Nur Azizah', 'img' => 'https://github.com/sukasukajija.png', 'link' => 'https://github.com/sukasukajija'],
-            ['name' => 'M. Husaini Hasyim', 'img' => 'https://github.com/son-alone.png', 'link' => 'https://github.com/son-alone'],
             ['name' => 'Andre Satriawan', 'img' => 'https://github.com/andresa11satriawan.png', 'link' => 'https://github.com/andresa11satriawan'],
             ['name' => 'Lathifah Putri Aresti', 'img' => 'https://github.com/lathifahputri.png', 'link' => 'https://github.com/lathifahputri'],
             ['name' => 'Sisca Amelia', 'img' => 'https://github.com/siscaamelia.png', 'link' => 'https://github.com/siscaamelia'],
