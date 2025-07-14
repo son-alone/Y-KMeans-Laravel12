@@ -5,7 +5,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Edit Role</h1>
+            <h1>Edit Jabatan (Role)</h1>
         </div>
 
     @if (count($errors) > 0)

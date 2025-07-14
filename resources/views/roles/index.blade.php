@@ -4,7 +4,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Role Management</h1>
+            <h1>Jabatan (Roles)</h1>
         </div>
 
 @session('success')

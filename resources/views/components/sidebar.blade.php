@@ -17,19 +17,19 @@
             <li class="menu-header">Access</li>
             
             <li class="{{ Request::is('hakakses') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route("roles.index") }}"><i class="fas fa-user-shield"></i> <span>Roles</span></a>
+                <a class="nav-link" href="{{ route("roles.index") }}"><i class="fas fa-user-shield"></i> <span> Jabatan (Roles)</span></a>
             </li>
             @endcan
             @can('user-list')
             <li class="{{ Request::is('hakakses') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route("users.index") }}"><i class="fas fa-user"></i> <span>Pengguna</span></a>
+                <a class="nav-link" href="{{ route("users.index") }}"><i class="fas fa-user"></i> <span>Pengguna (Users)</span></a>
             </li>
             @endcan
 
             <!-- profile ganti password -->
             <li class="menu-header">Profile</li>
             <li class="{{ Request::is('profile/edit') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('profile/edit') }}"><i class="far fa-user"></i> <span>Profile</span></a>
+                <a class="nav-link" href="{{ url('profile/edit') }}"><i class="far fa-user"></i> <span> Ubah Profile</span></a>
             </li>
             <li class="{{ Request::is('profile/change-password') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('profile/change-password') }}"><i class="fas fa-key"></i> <span>Ganti Password</span></a>

@@ -10,7 +10,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Tambah Data PT Prodi</h1>
+            <h1>Tambah Data Prodi Perguruan Tinggi</h1>
         </div>
 
         @if (session('message'))

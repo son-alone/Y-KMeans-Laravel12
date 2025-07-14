@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Create New User</h2>
+            <h2>Tambah Pengguna (User) Baru</h2>
         </div>
     </div>
 </div>

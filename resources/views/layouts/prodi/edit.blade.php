@@ -10,7 +10,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Data Prodi</h1>
+                <h1>Edit Data Prodi</h1>
             </div>
             <form action="{{ route('prodi.update', $prodi->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf

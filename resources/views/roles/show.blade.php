@@ -4,7 +4,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Show Role</h1>
+            <h1>Show Jabatan (Roles)</h1>
         </div>
 
 <div class="row">

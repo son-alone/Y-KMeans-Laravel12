@@ -4,7 +4,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Users Management</h1>
+            <h1>Pengguna (Users)</h1>
         </div>
         @session('success')
     <div class="alert alert-success" role="alert">

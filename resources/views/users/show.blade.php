@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2> Show User</h2>
+            <h2> Show Pengguna (Users)</h2>
         </div>
     </div>
 </div>

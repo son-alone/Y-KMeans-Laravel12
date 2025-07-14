@@ -10,7 +10,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Perguruan Tinggi dan Prodi</h1>
+            <h1>Prodi dan Perguruan Tinggi</h1>
         </div>
 
         @if (session('message'))

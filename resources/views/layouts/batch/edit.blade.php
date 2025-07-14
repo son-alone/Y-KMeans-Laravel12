@@ -10,7 +10,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Data Batch</h1>
+                <h1>Edit Data Batch</h1>
             </div>
             <form action="{{ route('batch.update', $batch->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
