@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/images/icons/icon-192x192.png">
   <title>Aplikasi Pemeriksaan Persyaratan Yudisium LLDIKTI Wilayah II</title>
 
   <!-- Google Fonts: Poppins & Nunito -->
@@ -34,7 +36,6 @@
       padding: 0;
       overflow-x: hidden;
     }
-    /* HERO SECTION */
     .hero {
       min-height: 100vh;
       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -70,7 +71,6 @@
       color: #fff;
       transform: scale(1.05);
     }
-    /* SECTION STYLE */
     .section {
       padding: 80px 20px;
     }
@@ -79,7 +79,6 @@
       font-weight: 600;
       margin-bottom: 40px;
     }
-    /* FEATURE CARDS */
     .feature-card {
       border: none;
       border-radius: 15px;
@@ -96,7 +95,6 @@
       color: var(--primary-color);
       margin-bottom: 15px;
     }
-    /* CONTRIBUTORS */
     .contributors img {
       border-radius: 50%;
       border: 4px solid #fff;
@@ -106,7 +104,6 @@
       transform: scale(1.1);
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
-    /* FOOTER */
     footer {
       background: var(--secondary-color);
       color: #fff;
@@ -214,62 +211,27 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({
-      once: true,
-      duration: 800,
-    });
-  </script>
+    AOS.init({ once: true, duration: 800 });
 
-<script>
-  let deferredPrompt;
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/serviceworker.js')
+          .then(reg => console.log('Service Worker registered:', reg))
+          .catch(err => console.log('Service Worker registration failed:', err));
+      });
+    }
 
-  window.addEventListener('beforeinstallprompt', (e) => {
-    // Simpan event agar bisa dipanggil nanti
-    e.preventDefault();
-    deferredPrompt = e;
-
-    // Tampilkan banner install setiap refresh
-    showInstallBanner();
-  });
-
-  function showInstallBanner() {
-    const banner = document.createElement('div');
-    banner.innerHTML = `
-      <div style="
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: white;
-        padding: 15px 20px;
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        z-index: 9999;
-        max-width: 90%;
-        text-align: center;">
-        <p style="margin: 0 0 10px;">Pasang aplikasi ini di layar utama?</p>
-        <button id="installBtn" style="background: #6c63ff; color: white; border: none; padding: 8px 20px; border-radius: 5px; font-weight: bold;">Install</button>
-        <button id="dismissBtn" style="margin-left: 10px; background: #ddd; color: #333; border: none; padding: 8px 15px; border-radius: 5px;">Tutup</button>
-      </div>
-    `;
-    document.body.appendChild(banner);
-
-    document.getElementById('installBtn').addEventListener('click', async () => {
-      banner.remove();
-      if (deferredPrompt) {
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      if (confirm('Install aplikasi ini di perangkat Anda?')) {
         deferredPrompt.prompt();
-        const result = await deferredPrompt.userChoice;
-        console.log('User choice:', result.outcome);
-        deferredPrompt = null;
+        deferredPrompt.userChoice.then(choiceResult => {
+          console.log('User choice:', choiceResult.outcome);
+        });
       }
     });
-
-    document.getElementById('dismissBtn').addEventListener('click', () => {
-      banner.remove();
-    });
-  }
-</script>
-
-
+  </script>
 </body>
 </html>
