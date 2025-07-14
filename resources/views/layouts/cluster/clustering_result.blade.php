@@ -151,7 +151,7 @@
             @if(isset($centroids) && isset($clusters))
             <div class="card shadow">
                 <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">Centroids (Titik Pusat Cluster)</h4>
+                    <h4 class="mb-0 text-dark">Centroids (Titik Pusat Cluster)</h4>
                 </div>
                 <div class="card-body table-responsive">
                     <table id="centroidsTable" class="table table-striped table-bordered table-hover">
@@ -179,7 +179,7 @@
 
             <div class="card shadow mt-4">
                 <div class="card-header bg-info text-white">
-                    <h4 class="mb-0">Clusters (Hasil Pengelompokan)</h4>
+                    <h4 class="mb-0 text-dark">Clusters (Hasil Pengelompokan)</h4>
                 </div>
                 <div class="card-body">
                     @foreach($clusters as $index => $cluster)
