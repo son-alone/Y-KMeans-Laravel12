@@ -51,7 +51,7 @@
                 <input type="text" name="akreditasi" id="akreditasi" class="form-control" value="{{ $ptprodi->akreditasi }}" maxlength="255" required>
             </div>
             <div class="form-group">
-                <label for="sk">SK</label>
+                <label for="sk">SK Prodi</label>
                 <input type="text" name="sk" id="sk" class="form-control" value="{{ $ptprodi->sk }}" maxlength="255" required>
             </div>
             <div class="form-group">

@@ -113,6 +113,39 @@
 
 @push('scripts')
     <!-- JS Libraries -->
+<script>
+    // Fungsi untuk memvalidasi IPK agar hanya menggunakan titik sebagai pemisah desimal
+    document.getElementById('ipk').addEventListener('input', function (e) {
+        var ipkValue = e.target.value;
+        
+        // Cek apakah input berisi koma, jika ada, ganti dengan titik
+        if (ipkValue.includes(',')) {
+            e.target.value = ipkValue.replace(',', '.');
+        }
+
+        // Validasi bahwa input hanya mengandung angka dan titik
+        var regex = /^[0-9]*\.?[0-9]+$/;  // Hanya angka dan satu titik desimal
+        if (!regex.test(ipkValue) && ipkValue !== "") {
+            // Tampilkan pesan kesalahan jika input tidak valid
+            alert("IPK hanya boleh menggunakan titik desimal (contoh: 3.5)");
+            e.target.setCustomValidity("IPK hanya boleh menggunakan titik desimal");
+        } else {
+            // Hapus pesan kesalahan jika input valid
+            e.target.setCustomValidity("");
+        }
+    });
+
+    // Validasi form sebelum submit
+    document.querySelector('form').addEventListener('submit', function (e) {
+        var ipkValue = document.getElementById('ipk').value;
+        var regex = /^[0-9]*\.?[0-9]+$/;  // Hanya angka dan titik desimal
+
+        if (!regex.test(ipkValue) && ipkValue !== "") {
+            e.preventDefault();  // Cegah form untuk submit jika IPK tidak valid
+            alert("IPK hanya boleh menggunakan titik desimal (contoh: 3.5)");
+        }
+    });
+</script>
 
     <!-- Page Specific JS File -->
 @endpush

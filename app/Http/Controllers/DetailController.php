@@ -189,7 +189,7 @@ class DetailController extends Controller
 
             return redirect()->route('detail.index')->with('message', 'Edit Data Berhasil');
         } catch (\Exception $e) {
-            dd($e);
+            //dd($e);
             return redirect()->back()->with('error', 'Edit Data Gagal');
         }
     }

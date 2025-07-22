@@ -46,8 +46,10 @@
         {{-- Script Chart --}}
         <script>
             var ipkData = @json($centroids);
-            console.log(ipkData);
             var ipkLabels = ipkData.map(function(centroid, index) {
+                // if (cluster_ipk_terbaik == index + 1) {
+                //     return 'Centroid ' + (index + 1) + "(IPK Tertinggi)";
+                // }
                 return 'Centroid ' + (index + 1);
             });
 
@@ -69,7 +71,11 @@
                     }]
                 },
                 options: {
-                    scales: { y: { beginAtZero: true } }
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
                 }
             });
         </script>
@@ -93,7 +99,11 @@
                     }]
                 },
                 options: {
-                    scales: { y: { beginAtZero: true } }
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
                 }
             });
         </script>
@@ -117,7 +127,11 @@
                     }]
                 },
                 options: {
-                    scales: { y: { beginAtZero: true } }
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
                 }
             });
         </script>
@@ -142,7 +156,11 @@
                     }]
                 },
                 options: {
-                    scales: { y: { beginAtZero: true } }
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
                 }
             });
         </script>
@@ -191,6 +209,7 @@
                                     <tr>
                                         <th>Perguruan Tinggi</th>
                                         <th>NPM/Mahasiswa</th>
+                                        <th>Predikat</th>
                                         <th>IPK</th>
                                         <th>Jumlah SKS</th>
                                         <th>Waktu Kuliah (Tahun)</th>
@@ -200,7 +219,15 @@
                                     @foreach($cluster as $member)
                                     <tr>
                                         <td>{{ $member[9] }}</td>
+                                        @if(isset($member['predicates']) && $member['predicates'])
                                         <td>{{ str($member[7]) . " " . $member[8] }}</td>
+                                        <td>{{ $member["predicates"] }}</td>
+
+                                        @else
+                                        <td>{{ str($member[7]) . " " . $member[8] }}</td>
+                                        <td>-</td>
+                                        @endif
+
                                         <td>{{ number_format($member[4], 2) }}</td>
                                         <td>{{ round($member[5]) }}</td>
                                         <td>{{ round($member[6],1) }}</td>

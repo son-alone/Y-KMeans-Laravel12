@@ -73,10 +73,12 @@
                         <label for="nama_mhs">Nama Mahasiswa</label>
                         <input type="text" name="nama_mhs" id="nama_mhs" class="form-control" value="{{ $detail->nama_mhs }}" maxlength="255" required>
                     </div>
+
                     <div class="form-group">
-                        <label for="ipk">IPK</label>
-                        <input type="double" name="ipk" id="ipk" class="form-control" value="{{ $detail->ipk }}" maxlength="255" required>
-                    </div>
+                    <label for="ipk">IPK</label>
+                    <input type="text" name="ipk" id="ipk" class="form-control" value="{{ $detail->ipk }}" maxlength="255" required pattern="^[0-9]*\.?[0-9]+$" title="IPK hanya boleh menggunakan angka dan titik desimal (contoh: 3.5)">
+                </div>
+
                     <div class="form-group">
                         <label for="jml_sks">Jumlah SKS</label>
                         <input type="number" name="jml_sks" id="jml_sks" class="form-control" value="{{ $detail->jml_sks }}" maxlength="255" required>

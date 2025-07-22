@@ -67,9 +67,11 @@
     @endphp
 
     @if ($filePath && Storage::disk('public')->exists($filePath))
+        @can('yudisium-download')
         <a href="{{ asset('storage/' . $filePath) }}" class="btn btn-info" target="_blank">
             Download File PDF
         </a>
+        @endcan
     @else
         <span class="text-danger">File tidak ditemukan</span>
     @endif

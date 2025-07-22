@@ -46,7 +46,7 @@
                             <th>Prodi</th>
                             <th>Jenjang</th>
                             <th>Akreditasi</th>
-                            <th>SK</th>
+                            <th>SK Prodi</th>
                             <th>Tanggal Berlaku</th>
                             <th>Jumlah Dosen</th>
                             <th>Jumlah Mahasiswa</th>

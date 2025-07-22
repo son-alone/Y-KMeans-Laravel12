@@ -23,6 +23,7 @@ class RoleController extends Controller
         $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index', 'store']]);
         $this->middleware('permission:role-verifikasi', ['only' => ['verifikasi']]);
         $this->middleware('permission:role-import', ['only' => ['import']]);
+        $this->middleware('permission:role-download', ['only' => ['download']]);
         $this->middleware('permission:role-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:role-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:role-delete', ['only' => ['destroy']]);
