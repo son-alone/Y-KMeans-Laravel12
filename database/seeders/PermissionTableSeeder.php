@@ -46,6 +46,7 @@ class PermissionTableSeeder extends Seeder
             'yudisium-verifikasi',
             'yudisium-create',
             'yudisium-edit',
+            'yudisium-download',
             'yudisium-delete',
             'detail-list',
             'detail-import',
